@@ -18,6 +18,13 @@ public class Beca {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Beca [id=" + id + ", idAlumno=" + idAlumno + ", fechaVencimiento=" + fechaVencimiento + "]";
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -46,9 +53,7 @@ public class Beca {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((fechaVencimiento == null) ? 0 : fechaVencimiento.hashCode());
 		result = prime * result + id;
-		result = prime * result + idAlumno;
 		return result;
 	}
 
@@ -61,17 +66,12 @@ public class Beca {
 		if (getClass() != obj.getClass())
 			return false;
 		Beca other = (Beca) obj;
-		if (fechaVencimiento == null) {
-			if (other.fechaVencimiento != null)
-				return false;
-		} else if (!fechaVencimiento.equals(other.fechaVencimiento))
-			return false;
 		if (id != other.id)
-			return false;
-		if (idAlumno != other.idAlumno)
 			return false;
 		return true;
 	}
+
+	
 	
 	
 
