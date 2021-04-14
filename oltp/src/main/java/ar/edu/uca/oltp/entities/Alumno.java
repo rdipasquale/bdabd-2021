@@ -1,6 +1,6 @@
 package ar.edu.uca.oltp.entities;
 
-import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,11 +12,18 @@ public class Alumno {
 	private int id;
 	private String nombre;
 	//Agregar mappeo
-	private HashSet<Carrera> carreras;
+	private Set<Carrera> carreras;
 	
 	public Alumno() {
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Alumno [id=" + id + ", nombre=" + nombre + "]";
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -34,11 +41,11 @@ public class Alumno {
 		this.nombre = nombre;
 	}
 
-	public HashSet<Carrera> getCarreras() {
+	public Set<Carrera> getCarreras() {
 		return carreras;
 	}
 
-	public void setCarreras(HashSet<Carrera> carreras) {
+	public void setCarreras(Set<Carrera> carreras) {
 		this.carreras = carreras;
 	}
 
@@ -46,9 +53,7 @@ public class Alumno {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((carreras == null) ? 0 : carreras.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		return result;
 	}
 
@@ -61,19 +66,11 @@ public class Alumno {
 		if (getClass() != obj.getClass())
 			return false;
 		Alumno other = (Alumno) obj;
-		if (carreras == null) {
-			if (other.carreras != null)
-				return false;
-		} else if (!carreras.equals(other.carreras))
-			return false;
 		if (id != other.id)
-			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
 			return false;
 		return true;
 	}
+
+	
 	
 }

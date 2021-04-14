@@ -20,6 +20,12 @@ public class Cuota {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Cuota [id=" + id + ", idAlumno=" + idAlumno + ", fecha=" + fecha + ", importe=" + importe + ", estado="
+				+ estado + "]";
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -64,13 +70,7 @@ public class Cuota {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + estado;
-		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((idAlumno == null) ? 0 : idAlumno.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(importe);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -83,24 +83,12 @@ public class Cuota {
 		if (getClass() != obj.getClass())
 			return false;
 		Cuota other = (Cuota) obj;
-		if (estado != other.estado)
-			return false;
-		if (fecha == null) {
-			if (other.fecha != null)
-				return false;
-		} else if (!fecha.equals(other.fecha))
-			return false;
 		if (id != other.id)
-			return false;
-		if (idAlumno == null) {
-			if (other.idAlumno != null)
-				return false;
-		} else if (!idAlumno.equals(other.idAlumno))
-			return false;
-		if (Double.doubleToLongBits(importe) != Double.doubleToLongBits(other.importe))
 			return false;
 		return true;
 	}
+
+	
 	
 	
 	
