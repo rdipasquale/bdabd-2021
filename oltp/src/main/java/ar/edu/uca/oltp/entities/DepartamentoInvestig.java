@@ -1,5 +1,7 @@
 package ar.edu.uca.oltp.entities;
 
+import java.util.Set;
+
 public class DepartamentoInvestig extends Instituto {
 	private Director director;
 	private Set<Proyecto> proyectos;
@@ -9,7 +11,10 @@ public class DepartamentoInvestig extends Instituto {
 	}
 	
 	public DepartamentoInvestig(int id, String nombre, Set<Edificio> edificio, Set<Personal> personal, Director director, Set<Proyecto> proyectos) {
-		super(id, nombre, edificio, personal);
+		this.setId(id);
+		this.setNombre(nombre);
+		this.setEdificios(edificio);
+		this.setPersonal(personal);
 		this.director = director;
 		this.proyectos = proyectos;
 	}

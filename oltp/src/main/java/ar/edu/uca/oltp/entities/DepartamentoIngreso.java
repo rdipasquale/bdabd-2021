@@ -1,14 +1,19 @@
 package ar.edu.uca.oltp.entities;
 
+import java.util.Set;
+
 public class DepartamentoIngreso extends Instituto {
 	private Director director;
 	
-	public DepartamentoIngreso {
+	public DepartamentoIngreso() {
 		
 	}
 	
 	public DepartamentoIngreso(int id, String nombre, Set<Edificio> edificio, Set<Personal> personal, Director director) {
-		super(id, nombre, edificio, personal);
+		this.setId(id);
+		this.setNombre(nombre);
+		this.setEdificios(edificio);
+		this.setPersonal(personal);
 		this.director = director;
 	}
 	

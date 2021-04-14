@@ -1,5 +1,7 @@
 package ar.edu.uca.oltp.entities;
 
+import java.util.Set;
+
 public class Facultad extends Instituto {
 	private Decano decano;
 	private Set<Carrera> carreras;
@@ -9,7 +11,10 @@ public class Facultad extends Instituto {
 	}
 	
 	public Facultad(int id, String nombre, Set<Edificio> edificio, Set<Personal> personal, Decano decano, Set<Carrera> carreras) {
-		super(id, nombre, edificio, personal);
+		this.setId(id);
+		this.setNombre(nombre);
+		this.setEdificios(edificio);
+		this.setPersonal(personal);
 		this.decano = decano;
 		this.carreras = carreras;
 	}
