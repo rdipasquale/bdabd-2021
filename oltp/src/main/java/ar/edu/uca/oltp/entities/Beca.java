@@ -17,6 +17,7 @@ public class Beca {
 	public Beca() {
 		
 	}
+	
 
 	@Override
 	public String toString() {
