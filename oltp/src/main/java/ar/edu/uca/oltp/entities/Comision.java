@@ -39,6 +39,12 @@ public class Comision {
 
 
 	@Override
+	public String toString() {
+		return "Comision [idComision=" + idComision + "]";
+	}
+
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -60,6 +66,8 @@ public class Comision {
 			return false;
 		return true;
 	}
+
+
 	
 	
 	

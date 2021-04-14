@@ -39,11 +39,16 @@ public class Cronograma {
 
 
 	@Override
+	public String toString() {
+		return "Cronograma [idCronograma=" + idCronograma + "]";
+	}
+
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idCronograma;
-		result = prime * result + ((temas == null) ? 0 : temas.hashCode());
 		return result;
 	}
 
@@ -59,13 +64,11 @@ public class Cronograma {
 		Cronograma other = (Cronograma) obj;
 		if (idCronograma != other.idCronograma)
 			return false;
-		if (temas == null) {
-			if (other.temas != null)
-				return false;
-		} else if (!temas.equals(other.temas))
-			return false;
 		return true;
 	}
+
+
+	
 	
 	
 	
