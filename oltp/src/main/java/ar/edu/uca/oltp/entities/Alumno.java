@@ -1,18 +1,17 @@
 package ar.edu.uca.oltp.entities;
 
-import java.util.Set;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Alumno {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ALUMNO_SEQ")
 	private int id;
 	private String nombre;
-	//Agregar mappeo
-	private Set<Carrera> carreras;
 	
 	public Alumno() {
 		
@@ -39,14 +38,6 @@ public class Alumno {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Set<Carrera> getCarreras() {
-		return carreras;
-	}
-
-	public void setCarreras(Set<Carrera> carreras) {
-		this.carreras = carreras;
 	}
 
 	@Override

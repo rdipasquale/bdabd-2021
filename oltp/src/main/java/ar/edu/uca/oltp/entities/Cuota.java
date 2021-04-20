@@ -3,18 +3,25 @@ package ar.edu.uca.oltp.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Cuota {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CUOTA_SEQ")
 	private int id;
-	//Agregar mappeo
-	private Alumno idAlumno;
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn (name = "ALUMNO_ID", nullable = false)
+	private Alumno alumno;
 	private Date fecha;
 	private double importe;
-	private int estado; //1 = pagada; 0 = falta pagar
+	private int estado; 
 	
 	public Cuota() {
 		
@@ -22,7 +29,7 @@ public class Cuota {
 
 	@Override
 	public String toString() {
-		return "Cuota [id=" + id + ", idAlumno=" + idAlumno + ", fecha=" + fecha + ", importe=" + importe + ", estado="
+		return "Cuota [id=" + id + ", alumno=" + alumno + ", fecha=" + fecha + ", importe=" + importe + ", estado="
 				+ estado + "]";
 	}
 
@@ -35,11 +42,11 @@ public class Cuota {
 	}
 
 	public Alumno getIdAlumno() {
-		return idAlumno;
+		return alumno;
 	}
 
-	public void setIdAlumno(Alumno idAlumno) {
-		this.idAlumno = idAlumno;
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
 	}
 
 	public Date getFecha() {
