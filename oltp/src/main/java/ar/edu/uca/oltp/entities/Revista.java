@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 
 @Entity
 public class Revista extends RecursoDeBiblioteca{
-	public Revista() {}
+	public Revista(int id , String nombre , Biblioteca biblioteca) {
+		super(id,nombre,biblioteca);
+	}
 
 }
