@@ -12,6 +12,11 @@ import javax.persistence.*;
 public abstract class Materia {
 @Id
 @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MATERIA_SEQ")
+@OneToMany(
+        mappedBy = "ID_MATERIA",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+)
     private int id_materia;
     private String M_TYPE;
     private int cargaHoraria;
