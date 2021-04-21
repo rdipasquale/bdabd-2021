@@ -1,15 +1,24 @@
 package ar.edu.uca.oltp.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class RecursoDeBiblioteca {
 	@Id
+	@GeneratedValue(strategy =GenerationType.SEQUENCE , generator = "RECBIBLIO_SEQ")
 	private int id;
 	
 	private String nombre;
-	private Biblioteca biblioteca ;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_BIBLIOTECA",nullable = false)
+	private Biblioteca biblioteca;
 	
 	public RecursoDeBiblioteca(int id , String nombre , Biblioteca biblioteca) {
 		this.id=id;
