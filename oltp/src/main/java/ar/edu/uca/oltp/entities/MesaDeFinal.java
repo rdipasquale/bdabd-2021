@@ -1,16 +1,21 @@
 package ar.edu.uca.oltp.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
 @Entity
 public class MesaDeFinal {
 @Id
+@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="MESAFINAL_SEQ")
     private int id_mesa;
-    private Materia materia;
+    private ArrayList<Materia> M = new ArrayList<>();
+
     private Date fecha;
     //private Nota nota;
 
@@ -18,9 +23,9 @@ public class MesaDeFinal {
     public MesaDeFinal() {
     }
 
-    public MesaDeFinal(int id_mesa, Materia materia, Date fecha) {
+    public MesaDeFinal(int id_mesa, ArrayList<Materia> m, Date fecha) {
         this.id_mesa = id_mesa;
-        this.materia = materia;
+        M = m;
         this.fecha = fecha;
     }
 
@@ -32,12 +37,12 @@ public class MesaDeFinal {
         this.id_mesa = id_mesa;
     }
 
-    public Materia getMateria() {
-        return materia;
+    public ArrayList<Materia> getM() {
+        return M;
     }
 
-    public void setMateria(Materia materia) {
-        this.materia = materia;
+    public void setM(ArrayList<Materia> m) {
+        M = m;
     }
 
     public Date getFecha() {
@@ -65,7 +70,7 @@ public class MesaDeFinal {
     public String toString() {
         return "MesaDeFinal{" +
                 "id_mesa=" + id_mesa +
-                ", materia=" + materia +
+                ", M=" + M +
                 ", fecha=" + fecha +
                 '}';
     }
