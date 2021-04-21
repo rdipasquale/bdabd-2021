@@ -22,8 +22,6 @@ public class Alumno {
 		return "Alumno [id=" + id + ", nombre=" + nombre + "]";
 	}
 
-
-
 	public int getId() {
 		return id;
 	}
