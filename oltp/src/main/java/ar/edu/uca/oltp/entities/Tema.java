@@ -3,13 +3,16 @@ package ar.edu.uca.oltp.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Tema {
 	
 	@Id
-	private int idTema;
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TEMA_SEQ")
+	private int id;
 	private Date fecha;
 	private String contenido;
 	
@@ -17,13 +20,19 @@ public class Tema {
 		super();
 	}
 
-	public int getIdTema() {
-		return idTema;
+	
+
+	public int getId() {
+		return id;
 	}
 
-	public void setIdTema(int idTema) {
-		this.idTema = idTema;
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
+
 
 	public Date getFecha() {
 		return fecha;
@@ -43,14 +52,14 @@ public class Tema {
 
 	@Override
 	public String toString() {
-		return "Tema [idTema=" + idTema + ", fecha=" + fecha + ", contenido=" + contenido + "]";
+		return "Tema [id=" + id + ", fecha=" + fecha + ", contenido=" + contenido + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idTema;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -63,7 +72,7 @@ public class Tema {
 		if (getClass() != obj.getClass())
 			return false;
 		Tema other = (Tema) obj;
-		if (idTema != other.idTema)
+		if (id != other.id)
 			return false;
 		return true;
 	}

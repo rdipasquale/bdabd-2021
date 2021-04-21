@@ -3,13 +3,20 @@ package ar.edu.uca.oltp.entities;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cronograma {
 	
 	@Id
-	private int idCronograma;
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CRONOGRAMA_SEQ")
+	private int id;
+	@OneToMany
+	@JoinColumn(name="TEMA_ID",nullable=false)
 	private List<Tema> temas;
 	
 	
@@ -18,14 +25,17 @@ public class Cronograma {
 	}
 
 
-	public int getIdCronograma() {
-		return idCronograma;
+	
+	public int getId() {
+		return id;
 	}
 
 
-	public void setIdCronograma(int idCronograma) {
-		this.idCronograma = idCronograma;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
 
 
 	public List<Tema> getTemas() {
@@ -40,7 +50,7 @@ public class Cronograma {
 
 	@Override
 	public String toString() {
-		return "Cronograma [idCronograma=" + idCronograma + "]";
+		return "Cronograma [id=" + id + "]";
 	}
 
 
@@ -48,7 +58,7 @@ public class Cronograma {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idCronograma;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -62,7 +72,7 @@ public class Cronograma {
 		if (getClass() != obj.getClass())
 			return false;
 		Cronograma other = (Cronograma) obj;
-		if (idCronograma != other.idCronograma)
+		if (id != other.id)
 			return false;
 		return true;
 	}

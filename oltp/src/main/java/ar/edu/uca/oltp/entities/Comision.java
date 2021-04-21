@@ -1,16 +1,30 @@
 package ar.edu.uca.oltp.entities;
 
-import java.util.List;
+import java.util.HashMap;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.MapKeyJoinColumn;
 
 @Entity
 public class Comision {
 	
 	@Id
-	private int idComision;
-	private List<Docente> docentes;
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="COMISION_SEQ")
+	private int id;
+	@ManyToMany
+	@MapKeyJoinColumn(name = "idCargoDocente")
+	@JoinTable(
+			name = "CargoDocente_Docente_Comision",
+			joinColumns = @JoinColumn(name = "idComision"),
+			inverseJoinColumns = @JoinColumn(name = "idDocente")
+		)
+	private HashMap<CargoDocente, Docente> docentes;
 	
 	
 	public Comision() {
@@ -18,29 +32,29 @@ public class Comision {
 	}
 
 
-	public int getIdComision() {
-		return idComision;
+	public int getId() {
+		return id;
 	}
 
 
-	public void setIdComision(int idComision) {
-		this.idComision = idComision;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
-	public List<Docente> getDocentes() {
+	public HashMap<CargoDocente, Docente> getDocentes() {
 		return docentes;
 	}
 
 
-	public void setDocentes(List<Docente> docentes) {
+	public void setDocentes(HashMap<CargoDocente, Docente> docentes) {
 		this.docentes = docentes;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Comision [idComision=" + idComision + "]";
+		return "Comision [id=" + id + "]";
 	}
 
 
@@ -48,7 +62,7 @@ public class Comision {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idComision;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -62,13 +76,12 @@ public class Comision {
 		if (getClass() != obj.getClass())
 			return false;
 		Comision other = (Comision) obj;
-		if (idComision != other.idComision)
+		if (id != other.id)
 			return false;
 		return true;
 	}
-
-
 	
 	
+
 	
 }
