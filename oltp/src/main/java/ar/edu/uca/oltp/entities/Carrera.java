@@ -1,30 +1,43 @@
 package ar.edu.uca.oltp.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Inheritance
+@Table(name = "CARRERA")
+@DiscriminatorColumn(name = "TIPO_CARRERA")
 abstract public class Carrera {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="CARRERA_SEQ")
+    @Column(updatable = false, nullable = false)
     private int id_carrera;
-    public List<Materia> materias;
     private String nombre;
+    private Plan plan;
+    private String tipoCarrera;
 
-    public Carrera(int id_carrera, String nombre, List<Materia> materias) {
+    public Carrera(int id_carrera, String nombre, Plan plan, String tipoCarrera) {
         this.id_carrera = id_carrera;
         this.nombre = nombre;
-        this.materias = materias;
+        this.plan = plan;
+        this.tipoCarrera = tipoCarrera;
     }
 
-    public List<Materia> getMaterias() {
-        return materias;
+    public Plan getPlan() {
+        return plan;
     }
 
-    public void setMaterias(List<Materia> materias) {
-        this.materias = materias;
+    public void setPlan(Plan plan) {
+        this.plan = plan;
+    }
+
+    public String getTipoCarrera() {
+        return tipoCarrera;
+    }
+
+    public void setTipoCarrera(String tipoCarrera) {
+        this.tipoCarrera = tipoCarrera;
     }
 
     public String getNombre() {
@@ -53,6 +66,6 @@ abstract public class Carrera {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId_carrera(), getMaterias(), getNombre());
+        return Objects.hash(getId_carrera(), getNombre(), getPlan());
     }
 }

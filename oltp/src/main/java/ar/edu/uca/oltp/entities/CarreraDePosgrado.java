@@ -1,13 +1,18 @@
 package ar.edu.uca.oltp.entities;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
-import java.util.List;
+import javax.persistence.Inheritance;
+import javax.persistence.Table;
 
 @Entity
+@Inheritance
+@Table(name = "CARRERA")
+@DiscriminatorColumn(name = "TIPO_CARRERA")
 public class CarreraDePosgrado extends Carrera{
 
-    public CarreraDePosgrado(int id_carrera, String nombre, List<Materia> materias) {
-        super(id_carrera, nombre, materias);
+    public CarreraDePosgrado(int id_carrera, String nombre, Plan plan, String tipoCarrera) {
+        super(id_carrera, nombre, plan, tipoCarrera);
     }
 
 }

@@ -1,12 +1,24 @@
 package ar.edu.uca.oltp.entities;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "PLAN")
 public class Plan {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="CARRERA_SEQ")
+    @Column(updatable = false, nullable = false)
     private int id_plan;
+
     private Date fechaDeCreacion;
+
+    @OneToMany( mappedBy = "ID_MATERIA",
+                cascade = CascadeType.ALL,
+                orphanRemoval = true
+    )
     public List<Materia> materias;
 
     public Plan(int id_plan, Date fechaDeCreacion, List<Materia> materias) {
