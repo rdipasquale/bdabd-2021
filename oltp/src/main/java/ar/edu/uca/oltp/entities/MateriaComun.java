@@ -7,7 +7,7 @@ import java.util.Date;
 public class MateriaComun extends Materia{
 
 
-    public MateriaComun(int id_materia, int cargaHoraria, Date cantHoras, String nombre) {
-        super(id_materia, cargaHoraria, cantHoras, nombre);
+    public MateriaComun(int id_materia, int cargaHoraria, int cantHoras, String nombre, String M_TYPE) {
+        super(id_materia, cargaHoraria, cantHoras, nombre,M_TYPE);
     }
 }

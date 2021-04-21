@@ -1,30 +1,41 @@
 package ar.edu.uca.oltp.entities;
 
-import java.util.Date;
+
 import java.util.Objects;
 
 
-import javax.persistence.Id;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
-
-public class Materia {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn( name = "M_TYPE")
+public abstract class Materia {
 @Id
+@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MATERIA_SEQ")
     private int id_materia;
+    private String M_TYPE;
     private int cargaHoraria;
-    private Date cantHoras;
+    private int cantHoras;
     private String nombre;
 
     public Materia() {
 
     }
 
-    public Materia(int id_materia, int cargaHoraria, Date cantHoras, String nombre) {
+    public Materia(int id_materia, int cargaHoraria, int cantHoras, String nombre, String M_TYPE) {
         this.id_materia = id_materia;
         this.cargaHoraria = cargaHoraria;
         this.cantHoras = cantHoras;
         this.nombre = nombre;
+        this.M_TYPE = M_TYPE;
+    }
+
+    public String getM_TYPE() {
+        return M_TYPE;
+    }
+
+    public void setM_TYPE(String m_TYPE) {
+        M_TYPE = m_TYPE;
     }
 
     public int getId_materia() {
@@ -35,7 +46,7 @@ public class Materia {
         return cargaHoraria;
     }
 
-    public Date getCantHoras() {
+    public int getCantHoras() {
         return cantHoras;
     }
 
@@ -51,7 +62,7 @@ public class Materia {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public void setCantHoras(Date cantHoras) {
+    public void setCantHoras(int cantHoras) {
         this.cantHoras = cantHoras;
     }
 
@@ -77,6 +88,7 @@ public class Materia {
     public String toString() {
         return "Materia{" +
                 "id_materia=" + id_materia +
+                ", M_TYPE='" + M_TYPE + '\'' +
                 ", cargaHoraria=" + cargaHoraria +
                 ", cantHoras=" + cantHoras +
                 ", nombre='" + nombre + '\'' +
