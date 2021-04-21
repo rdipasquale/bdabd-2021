@@ -1,10 +1,8 @@
 package ar.edu.uca.oltp.entities;
 
-import java.util.Date;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="InscripcionFinal")
@@ -14,8 +12,10 @@ public class InscripcionFinal {
 		this.alumno = alumno;
 		this.mesaDeFinal = mesaDeFinal;
 	}
-	//Agregar mappeo
+	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
+	@Column(name="MESA_DE_FINAL")
+	@JoinColumn(name="MESA_DE_FINAL", nullable = false)
 	private MesaDeFinal mesaDeFinal;
 	public Alumno getAlumno() {
 		return alumno;

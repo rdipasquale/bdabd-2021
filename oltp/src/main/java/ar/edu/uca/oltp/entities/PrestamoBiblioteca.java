@@ -1,10 +1,7 @@
 package ar.edu.uca.oltp.entities;
 
-import java.util.Date;
-
-import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="PrestamoBiblioteca")
@@ -14,8 +11,9 @@ public class PrestamoBiblioteca {
 		this.alumno = alumno;
 		this.recurso = recurso;
 	}
-	//Agregar mappeo
+	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
+	@JoinColumn(name="RECURSOS_DE_BIBLIOTECA", nullable = false)
 	private RecursoDeBiblioteca recurso;
 	public Alumno getAlumno() {
 		return alumno;

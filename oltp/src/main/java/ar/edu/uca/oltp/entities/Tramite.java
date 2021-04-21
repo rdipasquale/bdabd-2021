@@ -4,28 +4,33 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="Tramite")
 public class Tramite {
-	public Tramite(int numeroDeTramite, int estado, Date fechaInicio, Date fechaCierre) {
+	public Tramite(int id, int estado, Date fechaInicio, Date fechaCierre) {
 		super();
-		this.numeroDeTramite = numeroDeTramite;
+		this.id = id;
 		this.estado = estado;
 		this.fechaInicio = fechaInicio;
 		this.fechaCierre = fechaCierre;
-	}
-	//Agregar mappeo
-	private int numeroDeTramite;
+	}//asd
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRAMITE_SEQ")
+	private int id; //es el numeroDeTramite
 	private int estado;
+	@Column(name="FECHA_INICIO")
 	private Date fechaInicio;
+	@Column(name="FECHA_CIERRE")
 	private Date fechaCierre;
-	public int getNumeroDeTramite() {
-		return numeroDeTramite;
+	public int getid() {
+		return id;
 	}
-	public void setNumeroDeTramite(int numeroDeTramite) {
-		this.numeroDeTramite = numeroDeTramite;
+	public void setid(int id) {
+		this.id = id;
 	}
 	public int getEstado() {
 		return estado;
@@ -52,7 +57,7 @@ public class Tramite {
 		result = prime * result + estado;
 		result = prime * result + ((fechaCierre == null) ? 0 : fechaCierre.hashCode());
 		result = prime * result + ((fechaInicio == null) ? 0 : fechaInicio.hashCode());
-		result = prime * result + numeroDeTramite;
+		result = prime * result + id;
 		return result;
 	}
 	@Override
@@ -76,7 +81,7 @@ public class Tramite {
 				return false;
 		} else if (!fechaInicio.equals(other.fechaInicio))
 			return false;
-		if (numeroDeTramite != other.numeroDeTramite)
+		if (id != other.id)
 			return false;
 		return true;
 	}
