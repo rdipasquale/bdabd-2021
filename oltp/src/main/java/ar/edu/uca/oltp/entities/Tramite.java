@@ -17,7 +17,7 @@ public class Tramite {
 		this.estado = estado;
 		this.fechaInicio = fechaInicio;
 		this.fechaCierre = fechaCierre;
-	}
+	}//asd
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRAMITE_SEQ")
 	private int id; //es el numeroDeTramite
