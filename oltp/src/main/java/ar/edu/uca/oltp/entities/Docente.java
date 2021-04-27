@@ -1,29 +1,35 @@
 package ar.edu.uca.oltp.entities;
 
-import ar.edu.uca.oltp.valueObjects.CategoriaDocente;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@DiscriminatorValue("DOCENTE")
 public class Docente extends Personal{
 
     @Id
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="DOCENTE_SEQ")
     private int id;
     private String nombre;
-    private CategoriaDocente categoria;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="CARGO_ID", nullable = false)
+    private CargoDocente cargo;
 
-    public Docente(CategoriaDocente categoria) {
-        this.categoria = categoria;
+    public Docente(CargoDocente cargo) {
+        this.cargo = cargo;
     }
 
-    public CategoriaDocente getCategoria() {
-        return categoria;
+    public CargoDocente getCargo() {
+        return cargo;
     }
 
-    public void setCategoria(CategoriaDocente categoria) {
-        this.categoria = categoria;
+    public void setCargo(CargoDocente cargo) {
+        this.cargo = cargo;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getId(), getNombre(), getCargo());
     }
 
     @Override
@@ -31,20 +37,16 @@ public class Docente extends Personal{
         if (this == o) return true;
         if (!(o instanceof Docente)) return false;
         Docente docente = (Docente) o;
-        return getCategoria() == docente.getCategoria();
+        return getCargo() == docente.getCargo();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getCategoria());
-    }
 
     @Override
     public String toString() {
         return "Docente{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", categoria=" + categoria +
+                ", cargo=" + cargo +
                 '}';
     }
 }
