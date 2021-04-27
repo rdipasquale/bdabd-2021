@@ -15,13 +15,11 @@ abstract public class Carrera {
     private int id_carrera;
     private String nombre;
     private Plan plan;
-    private String tipoCarrera;
 
     public Carrera(int id_carrera, String nombre, Plan plan, String tipoCarrera) {
         this.id_carrera = id_carrera;
         this.nombre = nombre;
         this.plan = plan;
-        this.tipoCarrera = tipoCarrera;
     }
 
     public Plan getPlan() {
@@ -30,14 +28,6 @@ abstract public class Carrera {
 
     public void setPlan(Plan plan) {
         this.plan = plan;
-    }
-
-    public String getTipoCarrera() {
-        return tipoCarrera;
-    }
-
-    public void setTipoCarrera(String tipoCarrera) {
-        this.tipoCarrera = tipoCarrera;
     }
 
     public String getNombre() {
