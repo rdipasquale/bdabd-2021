@@ -2,10 +2,12 @@ package ar.edu.uca.oltp.entities;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@DiscriminatorColumn( name = "RECIBO_DE_SUELDO")
 public class ReciboDeSueldo {
 	
 	@Id
