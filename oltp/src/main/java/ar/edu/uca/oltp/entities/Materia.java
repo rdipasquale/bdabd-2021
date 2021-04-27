@@ -12,13 +12,9 @@ import javax.persistence.*;
 public abstract class Materia {
 @Id
 @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MATERIA_SEQ")
-@OneToMany(
-        mappedBy = "ID_MATERIA",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true
-)
-    private int id_materia;
-    private String M_TYPE;
+
+    private int idMateria;
+    private String mType;
     private int cargaHoraria;
     private int cantHoras;
     private String nombre;
@@ -27,24 +23,24 @@ public abstract class Materia {
 
     }
 
-    public Materia(int id_materia, int cargaHoraria, int cantHoras, String nombre, String M_TYPE) {
-        this.id_materia = id_materia;
+    public Materia(int idMateria, int cargaHoraria, int cantHoras, String nombre, String mType) {
+        this.idMateria = idMateria;
         this.cargaHoraria = cargaHoraria;
         this.cantHoras = cantHoras;
         this.nombre = nombre;
-        this.M_TYPE = M_TYPE;
+        this.mType = mType;
     }
 
-    public String getM_TYPE() {
-        return M_TYPE;
+    public String getmType() {
+        return mType;
     }
 
-    public void setM_TYPE(String m_TYPE) {
-        M_TYPE = m_TYPE;
+    public void setmType(String mType) {
+        this.mType = mType;
     }
 
-    public int getId_materia() {
-        return id_materia;
+    public int getIdMateria() {
+        return idMateria;
     }
 
     public int getCargaHoraria() {
@@ -59,8 +55,8 @@ public abstract class Materia {
         return nombre;
     }
 
-    public void setId_materia(int id_materia) {
-        this.id_materia = id_materia;
+    public void setIdMateria(int idMateria) {
+        this.idMateria = idMateria;
     }
 
     public void setCargaHoraria(int cargaHoraria) {
@@ -81,19 +77,19 @@ public abstract class Materia {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Materia materia = (Materia) o;
-        return id_materia == materia.id_materia;
+        return idMateria == materia.idMateria;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_materia);
+        return Objects.hash(idMateria);
     }
 
     @Override
     public String toString() {
         return "Materia{" +
-                "id_materia=" + id_materia +
-                ", M_TYPE='" + M_TYPE + '\'' +
+                "id_materia=" + idMateria +
+                ", M_TYPE='" + mType + '\'' +
                 ", cargaHoraria=" + cargaHoraria +
                 ", cantHoras=" + cantHoras +
                 ", nombre='" + nombre + '\'' +

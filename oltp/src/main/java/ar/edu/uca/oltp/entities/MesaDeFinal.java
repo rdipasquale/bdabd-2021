@@ -1,47 +1,49 @@
 package ar.edu.uca.oltp.entities;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.*;
+import javax.persistence.ManyToOne;
 
 
 
 @Entity
 public class MesaDeFinal {
 @Id
-
+@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+@JoinColumn(name = "idMateria")
 @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="MESAFINAL_SEQ")
-    private int id_mesa;
-    private ArrayList<Materia> materias = new ArrayList<>();
-
+    private int idMesa;
+    private Materia materia;
     private Date fecha;
-    //private Nota nota;
+    private Nota nota;
 
 
     public MesaDeFinal() {
     }
 
-    public MesaDeFinal(int id_mesa, ArrayList<Materia> materias, Date fecha) {
-        this.id_mesa = id_mesa;
-        this.materias = materias;
+    public MesaDeFinal(int idMesa, Materia materia, Date fecha, Nota nota) {
+        this.idMesa = idMesa;
+        this.materia = materia;
         this.fecha = fecha;
+        this.nota = nota;
     }
 
-    public int getId_mesa() {
-        return id_mesa;
+
+
+    public int getIdMesa() {
+        return idMesa;
     }
 
-    public void setId_mesa(int id_mesa) {
-        this.id_mesa = id_mesa;
+    public void setIdMesa(int idMesa) {
+        this.idMesa = idMesa;
     }
 
-    public ArrayList<Materia> getmaterias() {
-        return materias;
+    public Materia getmateria() {
+        return materia;
     }
 
-    public void setM(ArrayList<Materia> materias) {
-        this.materias = materias;
+    public void setM(Materia materia) {
+        this.materia = materia;
     }
 
     public Date getFecha() {
@@ -52,25 +54,34 @@ public class MesaDeFinal {
         this.fecha = fecha;
     }
 
+    public Nota getNota() {
+        return nota;
+    }
+
+    public void setNota(Nota nota) {
+        this.nota = nota;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MesaDeFinal that = (MesaDeFinal) o;
-        return id_mesa == that.id_mesa;
+        return idMesa == that.idMesa;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_mesa);
+        return Objects.hash(idMesa);
     }
 
     @Override
     public String toString() {
         return "MesaDeFinal{" +
-                "id_mesa=" + id_mesa +
-                ", materias=" + materias +
+                "idMesa=" + idMesa +
+                ", materia=" + materia +
                 ", fecha=" + fecha +
+                ", nota=" + nota +
                 '}';
     }
 }
