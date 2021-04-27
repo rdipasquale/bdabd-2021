@@ -2,7 +2,17 @@ package ar.edu.uca.oltp.entities;
 
 import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
+
+
+@Entity
+@DiscriminatorValue("DEPT_ING")
 public class DepartamentoIngreso extends Instituto {
+	
+	@OneToOne(fetch = FetchType.EAGER)
 	private Director director;
 	
 	public DepartamentoIngreso() {

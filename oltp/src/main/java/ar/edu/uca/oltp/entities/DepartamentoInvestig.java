@@ -2,8 +2,26 @@ package ar.edu.uca.oltp.entities;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+
+@Entity
+@DiscriminatorValue("DEPT_INV")
 public class DepartamentoInvestig extends Instituto {
+	
+	@OneToOne(fetch = FetchType.EAGER)
 	private Director director;
+	
+	@OneToMany(
+	        mappedBy = "ID_DEPT_INV",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	)
 	private Set<Proyecto> proyectos;
 
 	public DepartamentoInvestig() {

@@ -2,8 +2,25 @@ package ar.edu.uca.oltp.entities;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+@DiscriminatorValue("FACULTAD")
 public class Facultad extends Instituto {
+	
+	@OneToOne(fetch = FetchType.EAGER)
 	private Decano decano;
+	
+	@OneToMany(
+	        mappedBy = "ID_FACULTAD",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	)
 	private Set<Carrera> carreras;
 
 	public Facultad() {
