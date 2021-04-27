@@ -12,5 +12,8 @@ import ar.edu.uca.oltp.entities.Beca;
 
 @Transactional
 public interface BecaRepository extends CrudRepository<Beca, Integer>{
+	
+	@Cacheable("basicCache")
+	public List<Beca> findByFechaVencimientoBefore(Date fechaVencimiento) ;
 
 }
