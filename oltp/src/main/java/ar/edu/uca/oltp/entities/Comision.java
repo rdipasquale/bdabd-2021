@@ -3,12 +3,14 @@ package ar.edu.uca.oltp.entities;
 import java.util.HashMap;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
 
 @Entity
@@ -17,6 +19,9 @@ public class Comision {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="COMISION_SEQ")
 	private int id;
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name= "ID_MATERIA", nullable=false)
+	private Materia materia;
 	@ManyToMany
 	@MapKeyJoinColumn(name = "idCargoDocente")
 	@JoinTable(
