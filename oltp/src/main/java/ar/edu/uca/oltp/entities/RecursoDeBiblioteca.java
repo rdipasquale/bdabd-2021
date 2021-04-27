@@ -1,5 +1,6 @@
 package ar.edu.uca.oltp.entities;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-@Inheritance(strategy =InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy =InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "RDB_TYPE")
 public class RecursoDeBiblioteca {
 	@Id
 	@GeneratedValue(strategy =GenerationType.SEQUENCE , generator = "RECBIBLIO_SEQ")
