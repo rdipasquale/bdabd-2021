@@ -4,7 +4,10 @@ import java.util.Date;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @DiscriminatorColumn( name = "RECIBO_DE_SUELDO")
@@ -14,14 +17,16 @@ public class ReciboDeSueldo {
 	private int id;
 	private Date fecha;
 	private double remuneracion;
-	private int idPersonal;
 	
-	public ReciboDeSueldo(int id, Date fecha, double remuneracion, int idPersonal) {
-		super();
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JoinColumn (name = "ID_PERSONAL", nullable = false)
+	private Personal personal;
+	
+	public ReciboDeSueldo(int id, Date fecha, double remuneracion, Personal personal) {
 		this.id = id;
 		this.fecha = fecha;
 		this.remuneracion = remuneracion;
-		this.idPersonal = idPersonal;
+		this.personal = personal;
 	}
 	
 	public int getId() {
@@ -42,11 +47,11 @@ public class ReciboDeSueldo {
 	public void setRemuneracion(double remuneracion) {
 		this.remuneracion = remuneracion;
 	}
-	public int getIdPersonal() {
-		return idPersonal;
+	public Personal getPersonal() {
+		return personal;
 	}
-	public void setIdPersonal(int idPersonal) {
-		this.idPersonal = idPersonal;
+	public void setIdPersonal(Personal personal) {
+		this.personal = personal;
 	}
 
 	@Override
