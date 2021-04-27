@@ -1,11 +1,13 @@
 package ar.edu.uca.oltp.repositories;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+import javax.transaction.Transactional;
 
 import ar.edu.uca.oltp.entities.Materia;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public interface MateriaRepository extends MongoRepository<Materia, String> {
+
+
+@Transactional
+public interface MateriaRepository extends CrudRepository<Materia, Integer>{
 
 }
