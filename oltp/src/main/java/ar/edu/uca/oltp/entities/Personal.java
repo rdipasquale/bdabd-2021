@@ -1,13 +1,35 @@
 package ar.edu.uca.oltp.entities;
 
 import java.util.Set;
-import javax.persistence.Id;
 
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn( name = "PERSONAL_TYPE")
 public abstract class Personal {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PERSONAL_SEQ")
 	protected int id;
+	
 	protected String nombre;
+
+	@OneToMany(
+	        mappedBy = "ID_PERSONAL",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	)
+	protected Set<ReciboDeSueldo> recibos;
 	
 	public String getNombre() {
 		return nombre;
@@ -27,7 +49,6 @@ public abstract class Personal {
 	public void setRecibos(Set<ReciboDeSueldo> recibos) {
 		this.recibos = recibos;
 	}
-	protected Set<ReciboDeSueldo> recibos;
 
 	@Override
 	public int hashCode() {
