@@ -60,6 +60,56 @@ public class Proyecto {
 	public void setInvestigador(Set<Investigador> investigadores) {
 		this.investigadores = investigadores;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((alumnos == null) ? 0 : alumnos.hashCode());
+		result = prime * result + ((carrera == null) ? 0 : carrera.hashCode());
+		result = prime * result + ((director == null) ? 0 : director.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((investigadores == null) ? 0 : investigadores.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Proyecto other = (Proyecto) obj;
+		if (alumnos == null) {
+			if (other.alumnos != null)
+				return false;
+		} else if (!alumnos.equals(other.alumnos))
+			return false;
+		if (carrera == null) {
+			if (other.carrera != null)
+				return false;
+		} else if (!carrera.equals(other.carrera))
+			return false;
+		if (director == null) {
+			if (other.director != null)
+				return false;
+		} else if (!director.equals(other.director))
+			return false;
+		if (id != other.id)
+			return false;
+		if (investigadores == null) {
+			if (other.investigadores != null)
+				return false;
+		} else if (!investigadores.equals(other.investigadores))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		return true;
+	}
 
 	
 	
