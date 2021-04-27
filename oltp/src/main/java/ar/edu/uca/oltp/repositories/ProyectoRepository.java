@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 
 
 @Transactional
-public interface ProyectoRepository extends CrudRepository<Proyecto, String>{
+public interface ProyectoRepository extends CrudRepository<Proyecto, Integer>{
 
 }
