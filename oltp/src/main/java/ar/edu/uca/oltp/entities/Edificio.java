@@ -28,6 +28,7 @@ public class Edificio {
 	private Direccion direccion;
 	
 	
+	
 	@OneToMany(mappedBy="edificio", fetch=FetchType.LAZY)
 	private List instituto;
 	
