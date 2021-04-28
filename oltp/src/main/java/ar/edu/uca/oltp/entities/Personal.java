@@ -25,7 +25,7 @@ public abstract class Personal {
 	protected String nombre;
 
 	@OneToMany(
-	        mappedBy = "ID_PERSONAL",
+	        mappedBy = "personal",
 	        cascade = CascadeType.ALL,
 	        orphanRemoval = true
 	)
