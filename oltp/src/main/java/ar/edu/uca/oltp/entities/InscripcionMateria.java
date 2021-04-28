@@ -1,16 +1,17 @@
 package ar.edu.uca.oltp.entities;
 
 import javax.persistence.JoinColumn;
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 @Entity
 @Table(name="InscripcionMateria")
 public class InscripcionMateria extends Tramite{
-	public InscripcionMateria(Alumno alumno, Materia materia, Comision comision) {
-		super();
-		this.alumno = alumno;
-		this.materia = materia;
-		this.comision = comision;
+	public InscripcionMateria(int id, int estado, Date fechaInicio, Date fechaCierre) {
+		super(id, estado, fechaInicio, fechaCierre);
+		// TODO Auto-generated constructor stub
 	}
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
