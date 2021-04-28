@@ -9,8 +9,8 @@ import java.util.Date;
 @DiscriminatorValue("MC")
 public class MateriaComun extends Materia{
 
-
-    public MateriaComun(int idMateria, int cargaHoraria, int cantHoras, String nombre, String mType) {
-        super(idMateria, cargaHoraria, cantHoras, nombre,mType);
+    public MateriaComun() {
     }
+
+
 }

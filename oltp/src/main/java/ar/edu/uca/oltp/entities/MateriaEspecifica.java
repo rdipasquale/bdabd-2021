@@ -11,7 +11,5 @@ public class MateriaEspecifica extends Materia{
     public MateriaEspecifica() {
     }
 
-    public MateriaEspecifica(int idMateria, int cargaHoraria, int cantHoras, String nombre,String mType) {
-        super(idMateria, cargaHoraria, cantHoras, nombre,mType);
-    }
+
 }

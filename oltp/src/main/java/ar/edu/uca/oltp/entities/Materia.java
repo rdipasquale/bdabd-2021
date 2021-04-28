@@ -14,7 +14,6 @@ public abstract class Materia {
 @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MATERIA_SEQ")
 
     private int idMateria;
-    private String mType;
     private int cargaHoraria;
     private int cantHoras;
     private String nombre;
@@ -82,7 +81,6 @@ public abstract class Materia {
     public String toString() {
         return "Materia{" +
                 "id_materia=" + idMateria +
-                ", M_TYPE='" + mType + '\'' +
                 ", cargaHoraria=" + cargaHoraria +
                 ", cantHoras=" + cantHoras +
                 ", nombre='" + nombre + '\'' +
