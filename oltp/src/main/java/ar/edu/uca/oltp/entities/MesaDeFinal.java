@@ -17,17 +17,17 @@ public class MesaDeFinal {
 	@JoinColumn(name = "idMateria")
 	private Materia materia;
     private Date fecha;
-    private Nota nota;
+
 
 
     public MesaDeFinal() {
     }
 
-    public MesaDeFinal(int idMesa, Materia materia, Date fecha, Nota nota) {
+    public MesaDeFinal(int idMesa, Materia materia, Date fecha) {
         this.idMesa = idMesa;
         this.materia = materia;
         this.fecha = fecha;
-        this.nota = nota;
+
     }
 
 
@@ -56,13 +56,7 @@ public class MesaDeFinal {
         this.fecha = fecha;
     }
 
-    public Nota getNota() {
-        return nota;
-    }
 
-    public void setNota(Nota nota) {
-        this.nota = nota;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -83,7 +77,6 @@ public class MesaDeFinal {
                 "idMesa=" + idMesa +
                 ", materia=" + materia +
                 ", fecha=" + fecha +
-                ", nota=" + nota +
                 '}';
     }
 }
