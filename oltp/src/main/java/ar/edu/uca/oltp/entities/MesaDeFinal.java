@@ -8,12 +8,14 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class MesaDeFinal {
-@Id
-@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-@JoinColumn(name = "idMateria")
-@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="MESAFINAL_SEQ")
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="MESAFINAL_SEQ")
     private int idMesa;
-    private Materia materia;
+	
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idMateria")
+	private Materia materia;
     private Date fecha;
     private Nota nota;
 
