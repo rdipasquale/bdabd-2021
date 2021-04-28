@@ -23,21 +23,14 @@ public abstract class Materia {
 
     }
 
-    public Materia(int idMateria, int cargaHoraria, int cantHoras, String nombre, String mType) {
+    public Materia(int idMateria, int cargaHoraria, int cantHoras, String nombre) {
         this.idMateria = idMateria;
         this.cargaHoraria = cargaHoraria;
         this.cantHoras = cantHoras;
         this.nombre = nombre;
-        this.mType = mType;
     }
 
-    public String getmType() {
-        return mType;
-    }
 
-    public void setmType(String mType) {
-        this.mType = mType;
-    }
 
     public int getIdMateria() {
         return idMateria;
