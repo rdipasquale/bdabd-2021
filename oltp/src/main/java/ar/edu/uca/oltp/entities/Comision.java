@@ -1,6 +1,6 @@
 package ar.edu.uca.oltp.entities;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,7 +29,7 @@ public class Comision {
 			joinColumns = @JoinColumn(name = "idComision"),
 			inverseJoinColumns = @JoinColumn(name = "idDocente")
 		)
-	private HashMap<CargoDocente, Docente> docentes;
+	private Map<CargoDocente, Docente> docentes;
 	
 	
 	public Comision() {
@@ -47,12 +47,12 @@ public class Comision {
 	}
 
 
-	public HashMap<CargoDocente, Docente> getDocentes() {
+	public Map<CargoDocente, Docente> getDocentes() {
 		return docentes;
 	}
 
 
-	public void setDocentes(HashMap<CargoDocente, Docente> docentes) {
+	public void setDocentes(Map<CargoDocente, Docente> docentes) {
 		this.docentes = docentes;
 	}
 

@@ -1,7 +1,7 @@
 package ar.edu.uca.oltp.entities;
 
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +31,7 @@ public class Cursada {
 			joinColumns = @JoinColumn(name = "idCursada"),
 			inverseJoinColumns = @JoinColumn(name = "idDocente")
 		)
-	private HashMap<CargoDocente, Docente> docentes;
+	private Map<CargoDocente, Docente> docentes;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinTable(
 			name="CURSADA_AULA",
@@ -81,12 +81,12 @@ public class Cursada {
 	}
 
 
-	public HashMap<CargoDocente, Docente> getDocentes() {
+	public Map<CargoDocente, Docente> getDocentes() {
 		return docentes;
 	}
 
 
-	public void setDocentes(HashMap<CargoDocente, Docente> docentes) {
+	public void setDocentes(Map<CargoDocente, Docente> docentes) {
 		this.docentes = docentes;
 	}
 
