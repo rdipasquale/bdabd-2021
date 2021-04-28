@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "RecursoDeBiblioteca")
+@Table(name = "RECURSODEBIBLIOTECA")
 @Inheritance(strategy =InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "RDB_TYPE")
 public class RecursoDeBiblioteca {
