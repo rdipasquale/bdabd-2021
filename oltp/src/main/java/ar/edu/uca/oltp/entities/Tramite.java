@@ -17,15 +17,15 @@ public class Tramite {
 		this.estado = estado;
 		this.fechaInicio = fechaInicio;
 		this.fechaCierre = fechaCierre;
-	}//asd
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRAMITE_SEQ")
 	private int id; //es el numeroDeTramite
-	private int estado;
+	protected int estado;
 	@Column(name="FECHA_INICIO")
 	private Date fechaInicio;
 	@Column(name="FECHA_CIERRE")
-	private Date fechaCierre;
+	protected Date fechaCierre;
 	public int getid() {
 		return id;
 	}
@@ -49,6 +49,9 @@ public class Tramite {
 	}
 	public void setFechaCierre(Date fechaCierre) {
 		this.fechaCierre = fechaCierre;
+	}
+	public int alumnosPorComision(Comision comision) { //HACER METODO
+		return 1;
 	}
 	@Override
 	public int hashCode() {

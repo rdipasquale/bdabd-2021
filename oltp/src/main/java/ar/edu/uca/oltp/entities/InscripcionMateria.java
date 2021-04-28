@@ -1,16 +1,17 @@
 package ar.edu.uca.oltp.entities;
 
 import javax.persistence.JoinColumn;
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 @Entity
 @Table(name="InscripcionMateria")
-public class InscripcionMateria {
-	public InscripcionMateria(Alumno alumno, Materia materia, Comision comision) {
-		super();
-		this.alumno = alumno;
-		this.materia = materia;
-		this.comision = comision;
+public class InscripcionMateria extends Tramite{
+	public InscripcionMateria(int id, int estado, Date fechaInicio, Date fechaCierre) {
+		super(id, estado, fechaInicio, fechaCierre);
+		// TODO Auto-generated constructor stub
 	}
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
@@ -35,5 +36,40 @@ public class InscripcionMateria {
 	}
 	public void setComision(Comision comision) {
 		this.comision = comision;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((alumno == null) ? 0 : alumno.hashCode());
+		result = prime * result + ((comision == null) ? 0 : comision.hashCode());
+		result = prime * result + ((materia == null) ? 0 : materia.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		InscripcionMateria other = (InscripcionMateria) obj;
+		if (alumno == null) {
+			if (other.alumno != null)
+				return false;
+		} else if (!alumno.equals(other.alumno))
+			return false;
+		if (comision == null) {
+			if (other.comision != null)
+				return false;
+		} else if (!comision.equals(other.comision))
+			return false;
+		if (materia == null) {
+			if (other.materia != null)
+				return false;
+		} else if (!materia.equals(other.materia))
+			return false;
+		return true;
 	}
 }
