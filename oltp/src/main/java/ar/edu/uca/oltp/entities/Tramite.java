@@ -8,20 +8,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import ar.edu.uca.oltp.valueObjects.EstadoTramite;
 @Entity
 @Table(name="Tramite")
 public class Tramite {
-	public Tramite(int id, int estado, Date fechaInicio, Date fechaCierre) {
+	public Tramite(EstadoTramite estado, Date fechaInicio, Date fechaCierre) {
 		super();
-		this.id = id;
 		this.estado = estado;
 		this.fechaInicio = fechaInicio;
 		this.fechaCierre = fechaCierre;
 	}
+	public Tramite() {
+		
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRAMITE_SEQ")
 	private int id; //es el numeroDeTramite
-	protected int estado;
+	protected EstadoTramite estado;
 	@Column(name="FECHA_INICIO")
 	private Date fechaInicio;
 	@Column(name="FECHA_CIERRE")
@@ -32,10 +36,17 @@ public class Tramite {
 	public void setid(int id) {
 		this.id = id;
 	}
-	public int getEstado() {
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public EstadoTramite getEstado() {
 		return estado;
 	}
-	public void setEstado(int estado) {
+	public void setEstado(EstadoTramite estado) {
 		this.estado = estado;
 	}
 	public Date getFechaInicio() {
@@ -57,9 +68,6 @@ public class Tramite {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + estado;
-		result = prime * result + ((fechaCierre == null) ? 0 : fechaCierre.hashCode());
-		result = prime * result + ((fechaInicio == null) ? 0 : fechaInicio.hashCode());
 		result = prime * result + id;
 		return result;
 	}
@@ -72,21 +80,10 @@ public class Tramite {
 		if (getClass() != obj.getClass())
 			return false;
 		Tramite other = (Tramite) obj;
-		if (estado != other.estado)
-			return false;
-		if (fechaCierre == null) {
-			if (other.fechaCierre != null)
-				return false;
-		} else if (!fechaCierre.equals(other.fechaCierre))
-			return false;
-		if (fechaInicio == null) {
-			if (other.fechaInicio != null)
-				return false;
-		} else if (!fechaInicio.equals(other.fechaInicio))
-			return false;
 		if (id != other.id)
 			return false;
 		return true;
 	}
+	
 	
 }
