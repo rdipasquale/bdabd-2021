@@ -8,24 +8,26 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class MesaDeFinal {
-@Id
-@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-@JoinColumn(name = "idMateria")
-@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="MESAFINAL_SEQ")
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="MESAFINAL_SEQ")
     private int idMesa;
-    private Materia materia;
+	
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idMateria")
+	private Materia materia;
     private Date fecha;
-    private Nota nota;
+
 
 
     public MesaDeFinal() {
     }
 
-    public MesaDeFinal(int idMesa, Materia materia, Date fecha, Nota nota) {
+    public MesaDeFinal(int idMesa, Materia materia, Date fecha) {
         this.idMesa = idMesa;
         this.materia = materia;
         this.fecha = fecha;
-        this.nota = nota;
+
     }
 
 
@@ -54,13 +56,7 @@ public class MesaDeFinal {
         this.fecha = fecha;
     }
 
-    public Nota getNota() {
-        return nota;
-    }
 
-    public void setNota(Nota nota) {
-        this.nota = nota;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -81,7 +77,6 @@ public class MesaDeFinal {
                 "idMesa=" + idMesa +
                 ", materia=" + materia +
                 ", fecha=" + fecha +
-                ", nota=" + nota +
                 '}';
     }
 }
