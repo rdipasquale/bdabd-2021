@@ -1,23 +1,47 @@
 package ar.edu.uca.oltp.entities;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Proyecto")
 public class Proyecto {
-	@Id
-	private int id;
-	private String nombre;
-	private Carrera carrera;
-	private Director director;
-	//Agregar mappeo
-	private Set<Alumno> alumnos;
-	private Set<Investigador> investigadores;
+	public Proyecto(String nombreProyecto, Carrera carrera,Director director, Set<Alumno> alumnos, Set<Investigador> investigadores) {
+		this.nombre=nombreProyecto;
+		this.carrera=carrera;
+		this.director=director;
+		this.alumnos=alumnos;
+		this.investigadores=investigadores;
+	}
 	
 	public Proyecto() {
 		
 	}
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="PROYECTO_SEQ")
+	private int id;
+	private String nombre;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="CARRERA",nullable=false)
+	private Carrera carrera;
+	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.REMOVE})
+	@JoinColumn(name="DIRECTOR",nullable=false)
+	private Director director;
+	@JoinColumn(name="ALUMNO")
+	private Set<Alumno> alumnos;
+	@JoinColumn(name="INVESTIGADOR")
+	private Set<Investigador> investigadores;
+	
+	
 	@Override
 	public String toString() {
 		return "Proyecto [id=" + id + ", nombre=" + nombre + "]";
