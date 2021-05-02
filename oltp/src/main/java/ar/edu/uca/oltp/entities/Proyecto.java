@@ -15,12 +15,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Proyecto")
 public class Proyecto {
-	public Proyecto(String nombreProyecto, Carrera carrera,Director director, Set<Alumno> alumnos, Set<Investigador> investigadores) {
+	public Proyecto(String nombreProyecto, Carrera carrera,Director director, Set<Alumno> alumnos, Set<Investigador> investigadores, DepartamentoInvestig deptInv) {
 		this.nombre=nombreProyecto;
 		this.carrera=carrera;
 		this.director=director;
 		this.alumnos=alumnos;
 		this.investigadores=investigadores;
+		this.deptInv = deptInv;
 	}
 	
 	public Proyecto() {
@@ -40,6 +41,8 @@ public class Proyecto {
 	private Set<Alumno> alumnos;
 	@JoinColumn(name="INVESTIGADOR")
 	private Set<Investigador> investigadores;
+	@ManyToOne
+	private DepartamentoInvestig deptInv;
 	
 	
 	@Override
@@ -84,6 +87,12 @@ public class Proyecto {
 	public void setInvestigador(Set<Investigador> investigadores) {
 		this.investigadores = investigadores;
 	}
+	public DepartamentoInvestig getDeptInv() {
+		return deptInv;
+	}
+	public void setDeptInv(DepartamentoInvestig deptInv) {
+		this.deptInv = deptInv;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -94,6 +103,7 @@ public class Proyecto {
 		result = prime * result + id;
 		result = prime * result + ((investigadores == null) ? 0 : investigadores.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((deptInv == null) ? 0 : deptInv.hashCode());
 		return result;
 	}
 	@Override
@@ -132,6 +142,12 @@ public class Proyecto {
 				return false;
 		} else if (!nombre.equals(other.nombre))
 			return false;
+		if (deptInv == null) {
+			if (other.deptInv != null)
+				return false;
+		} else if (!deptInv.equals(other.deptInv))
+			return false;
+		
 		return true;
 	}
 
