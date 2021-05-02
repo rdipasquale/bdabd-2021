@@ -11,19 +11,17 @@ import javax.persistence.OneToOne;
 @Entity
 @DiscriminatorValue("DEPT_ING")
 public class DepartamentoIngreso extends Instituto {
-	
-	@OneToOne(fetch = FetchType.EAGER)
+
 	private Director director;
 	
 	public DepartamentoIngreso() {
 		
 	}
 	
-	public DepartamentoIngreso(int id, String nombre, Set<Edificio> edificio, Set<Personal> personal, Director director) {
+	public DepartamentoIngreso(int id, String nombre, Set<Edificio> edificio, Director director) {
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setEdificios(edificio);
-		this.setPersonal(personal);
 		this.director = director;
 	}
 	

@@ -13,12 +13,11 @@ import javax.persistence.OneToOne;
 @Entity
 @DiscriminatorValue("DEPT_INV")
 public class DepartamentoInvestig extends Instituto {
-	
-	@OneToOne(fetch = FetchType.EAGER)
+
 	private Director director;
 	
 	@OneToMany(
-	        mappedBy = "ID_DEPT_INV",
+	        mappedBy = "deptInv",
 	        cascade = CascadeType.ALL,
 	        orphanRemoval = true
 	)
@@ -28,11 +27,10 @@ public class DepartamentoInvestig extends Instituto {
 		
 	}
 	
-	public DepartamentoInvestig(int id, String nombre, Set<Edificio> edificio, Set<Personal> personal, Director director, Set<Proyecto> proyectos) {
+	public DepartamentoInvestig(int id, String nombre, Set<Edificio> edificio, Director director, Set<Proyecto> proyectos) {
 		this.setId(id);
 		this.setNombre(nombre);
 		this.setEdificios(edificio);
-		this.setPersonal(personal);
 		this.director = director;
 		this.proyectos = proyectos;
 	}

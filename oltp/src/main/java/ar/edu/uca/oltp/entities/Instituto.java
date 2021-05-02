@@ -2,7 +2,6 @@ package ar.edu.uca.oltp.entities;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 
 
 @Entity
@@ -24,20 +25,12 @@ abstract public class Instituto {
 	
 	private String nombre;
 	
-	@OneToMany(
-	        mappedBy = "ID_INSTITUTO",
-	        cascade = CascadeType.ALL,
-	        orphanRemoval = true
-	)
+	@ManyToMany
+	@JoinTable(name="instituto_edificio",
+    joinColumns=@JoinColumn(name="instituto_id", referencedColumnName="id"),
+    inverseJoinColumns=@JoinColumn(name="edificio_id", referencedColumnName="id"))
 	private Set<Edificio> edificios;
-	
-	@OneToMany(
-	        mappedBy = "ID_INSTITUTO",
-	        cascade = CascadeType.ALL,
-	        orphanRemoval = true
-	)
-	private Set<Personal> personal;
-	
+		
 	public int getId() {
 		return id;
 	}
@@ -60,14 +53,6 @@ abstract public class Instituto {
 	
 	public void setEdificios(Set<Edificio> edificios) {
 		this.edificios = edificios;
-	}
-	
-	public Set<Personal> getPersonal() {
-		return personal;
-	}
-	
-	public void setPersonal(Set<Personal> personal) {
-		this.personal = personal;
 	}
 	
 	@Override
