@@ -15,7 +15,7 @@ public class Plan {
 
     private Date fechaDeCreacion;
 
-    @OneToMany( mappedBy = "ID_MATERIA",
+    @OneToMany( mappedBy = "plan",
                 cascade = CascadeType.ALL,
                 orphanRemoval = true
     )
