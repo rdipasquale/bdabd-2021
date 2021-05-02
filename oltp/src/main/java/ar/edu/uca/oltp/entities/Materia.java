@@ -17,16 +17,18 @@ public abstract class Materia {
     private int cargaHoraria;
     private int cantHoras;
     private String nombre;
+    private Plan plan;
 
     public Materia() {
 
     }
 
-    public Materia(int idMateria, int cargaHoraria, int cantHoras, String nombre) {
+    public Materia(int idMateria, int cargaHoraria, int cantHoras, String nombre, Plan plan) {
         this.idMateria = idMateria;
         this.cargaHoraria = cargaHoraria;
         this.cantHoras = cantHoras;
         this.nombre = nombre;
+        this.plan = plan;
     }
 
 
@@ -61,6 +63,14 @@ public abstract class Materia {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public Plan getPlan() {
+    	return plan;
+    }
+    
+    public void setPlan(Plan plan) {
+    	this.plan = plan;
     }
 
 
