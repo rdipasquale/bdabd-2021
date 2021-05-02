@@ -15,11 +15,13 @@ abstract public class Carrera {
     private int id_carrera;
     private String nombre;
     private Plan plan;
+    private Facultad facultad;
 
-    public Carrera(int id_carrera, String nombre, Plan plan, String tipoCarrera) {
+    public Carrera(int id_carrera, String nombre, Plan plan, Facultad facultad, String tipoCarrera) {
         this.id_carrera = id_carrera;
         this.nombre = nombre;
         this.plan = plan;
+        this.facultad = facultad;
     }
 
     public Plan getPlan() {
@@ -45,6 +47,14 @@ abstract public class Carrera {
     public void setId_carrera(int id_carrera) {
         this.id_carrera = id_carrera;
     }
+    
+    public Facultad getFacultad() {
+        return facultad;
+    }
+
+    public void setFacultad(Facultad facultad) {
+        this.facultad = facultad;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -56,6 +66,6 @@ abstract public class Carrera {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId_carrera(), getNombre(), getPlan());
+        return Objects.hash(getId_carrera(), getNombre(), getPlan(), getFacultad());
     }
 }
