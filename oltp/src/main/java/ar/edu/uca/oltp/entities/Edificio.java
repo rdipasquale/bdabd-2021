@@ -9,8 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Edificio {
@@ -24,12 +24,12 @@ public class Edificio {
 	@JoinColumn(name="DIRECCION")
 	private Direccion direccion;
 	
-	@OneToMany(mappedBy="edificio", fetch=FetchType.LAZY)
-	private List<Instituto> instituto;
+	@ManyToMany(mappedBy="edificios", fetch=FetchType.LAZY)
+	private List<Instituto> institutos;
 	
 	@Override
 	public String toString() {
-		return "Edificio [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", instituto=" + instituto
+		return "Edificio [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", instituto=" + institutos
 				+ "]";
 	}
 	public String getNombre() {
@@ -51,10 +51,10 @@ public class Edificio {
 		this.id = id;
 	}
 	public List<Instituto> getInstituto() {
-		return instituto;
+		return institutos;
 	}
-	public void setInstituto(List<Instituto> instituto) {
-		this.instituto = instituto;
+	public void setInstituto(List<Instituto> institutos) {
+		this.institutos = institutos;
 	}
 	@Override
 	public int hashCode() {
