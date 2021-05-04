@@ -11,6 +11,5 @@ import org.springframework.data.repository.CrudRepository;
 @Transactional
 public interface TramiteRepository extends CrudRepository<Tramite, Integer>{
 	
-	//int alumnosPorComision(Comision comision);
-	
+	int countByComision(Comision comision);
 }
