@@ -14,7 +14,11 @@ abstract public class Carrera {
     @Column(updatable = false, nullable = false)
     private int id_carrera;
     private String nombre;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(columnDefinition = "PLAN_ID")
     private Plan plan;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(columnDefinition = "FACULTAD_ID")
     private Facultad facultad;
 
     public Carrera() {
