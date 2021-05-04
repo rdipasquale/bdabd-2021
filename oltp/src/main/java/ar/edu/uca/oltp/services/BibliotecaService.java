@@ -41,7 +41,7 @@ public class BibliotecaService {
 	
 	public PrestamoBiblioteca registerPrestamo(Alumno alumno, List<RecursoDeBiblioteca> recursos) {
 		//HAY QUE ARREGLAR ESTE METODO Y VALIDAR LOS RECURSOS
-		recursoDeBibliotecaRepository.validateRecursosNoPrestado(recursos);
+//		recursoDeBibliotecaRepository.validateRecursosNoPrestado(recursos);
 		PrestamoBiblioteca prestamo = new PrestamoBiblioteca();
 		return prestamo;
 	}
