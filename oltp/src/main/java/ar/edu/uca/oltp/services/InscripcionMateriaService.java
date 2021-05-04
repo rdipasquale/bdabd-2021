@@ -23,19 +23,25 @@ public class InscripcionMateriaService {
 	  }
 	  
 	  public InscripcionMateria crearInscripcion(Alumno alumno, Materia materia, Comision comision) {
-		  return imRepository. crearInscripcion(alumno, materia, comision);
+		  //Validaciones
+		  //crear excepciones
+		  // y el armado del objeto
+		  //hacemos el save y lo devolves
 	  }
 	  
 	  public void borrarInscripcion(InscripcionMateria inscripcion) {
-		  imRepository.borrarInscripcion(inscripcion);
+		  imRepository.delete(inscripcion);
 	  }
 	  
-	  public List<Alumno> buscarTodosLosInscriptosPorMateriaId(Integer materiaId)
+	  public List<InscripcionMateria> buscarTodosLosInscriptosPorMateria(Materia materia)
 	  {
-		  return imRepository.buscarTodosLosInscriptosPorMateriaId(materiaId);
+		  return imRepository.findByMateria(materia);
 	  }
 
-	  public List<InscripcionMateria> buscarTodasLasInscripcionesPorAlumnoId(Integer alumnoId) {
-		  return imRepository.buscarTodasLasInscripcionesPorAlumnoId(alumnoId);
+	  public List<InscripcionMateria> buscarTodasLasInscripcionesPorAlumno(Alumno alumno) {
+		  return imRepository.findByAlumno(alumno);
+	  }
+	  public List<InscripcionMateria> buscarTodasLasInscripcionesPorComision(Comision comision) {
+		  return imRepository.findByComision(comision);
 	  }
 }

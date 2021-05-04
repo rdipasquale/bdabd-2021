@@ -14,11 +14,7 @@ import org.springframework.data.repository.CrudRepository;
 @Transactional
 public interface InscripcionMateriaRepository extends CrudRepository<InscripcionMateria, Integer> {	
 
-	InscripcionMateria crearInscripcion(Alumno alumno, Materia materia, Comision comision);
-
-	void borrarInscripcion(InscripcionMateria inscripcion);
-
-	List<Alumno> buscarTodosLosInscriptosPorMateriaId(Integer materia_id);
-	
-	List<InscripcionMateria> buscarTodasLasInscripcionesPorAlumnoId(Integer alumnoId);
+	List<InscripcionMateria> findByMateria(Materia materia);
+	List<InscripcionMateria> findByAlumno(Alumno alumno);
+	List<InscripcionMateria> findByComision(Comision comision);
 }
