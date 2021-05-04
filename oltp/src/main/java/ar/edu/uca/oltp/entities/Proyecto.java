@@ -2,14 +2,15 @@ package ar.edu.uca.oltp.entities;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -37,11 +38,17 @@ public class Proyecto {
 	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.REMOVE})
 	@JoinColumn(name="DIRECTOR",nullable=false)
 	private Director director;
-	@JoinColumn(name="ALUMNO")
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "PROYECTO_ALUMNOS")
 	private Set<Alumno> alumnos;
-	@JoinColumn(name="INVESTIGADOR")
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "PROYECTO_INVESTIGADORES")
 	private Set<Investigador> investigadores;
+	
 	@ManyToOne
+	@JoinColumn(columnDefinition = "DEP_INV_ID")
 	private DepartamentoInvestig deptInv;
 	
 	
