@@ -4,5 +4,6 @@ public enum EstadoTramite {
 	INICIADO,
 	EN_CURSO,
 	RECHAZADO,
-	ACEPTADO
+	ACEPTADO,
+	FINALIZADO
 }
