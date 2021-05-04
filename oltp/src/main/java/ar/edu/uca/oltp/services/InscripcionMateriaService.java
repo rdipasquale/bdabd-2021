@@ -23,6 +23,7 @@ public class InscripcionMateriaService {
 	  }
 	  
 	  public InscripcionMateria crearInscripcion(Alumno alumno, Materia materia, Comision comision) {
+		return null;
 		  //Validaciones
 		  //crear excepciones
 		  // y el armado del objeto
