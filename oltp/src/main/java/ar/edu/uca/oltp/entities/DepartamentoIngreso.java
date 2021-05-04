@@ -5,13 +5,16 @@ import java.util.Set;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity
 @DiscriminatorValue("DEPT_ING")
 public class DepartamentoIngreso extends Instituto {
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(columnDefinition = "DIRECTOR_ID")
 	private Director director;
 	
 	public DepartamentoIngreso() {

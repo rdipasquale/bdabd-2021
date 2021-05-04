@@ -6,13 +6,16 @@ import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("FACULTAD")
 public class Facultad extends Instituto {
 	
+	@ManyToOne(fetch = FetchType.EAGER,optional = false)
+	@JoinColumn(columnDefinition = "DECANO_ID")
 	private Decano decano;
 	
 	@OneToMany(
