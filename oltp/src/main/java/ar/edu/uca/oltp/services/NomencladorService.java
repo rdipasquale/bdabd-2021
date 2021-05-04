@@ -1,6 +1,5 @@
 package ar.edu.uca.oltp.services;
 
-
 import ar.edu.uca.oltp.entities.Biblioteca;
 import ar.edu.uca.oltp.entities.Carrera;
 import ar.edu.uca.oltp.entities.Edificio;
@@ -15,8 +14,6 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-
 
 @Component
 @Transactional
@@ -39,6 +36,10 @@ public class NomencladorService {
     {
         edificioRepository.save(edificio);
     }
+    public void agregarBiblioteca(Biblioteca biblioteca)
+    {
+        bibliotecaRepository.save(biblioteca);
+    }
     
     public Set<Edificio> edificiosConBiblioteca() {
     	List<Biblioteca> bibliotecas = (List<Biblioteca>) bibliotecaRepository.findAll();
@@ -48,9 +49,5 @@ public class NomencladorService {
     	}
     	return edificiosConBiblioteca;
     }
-
-
-
-
 
 }
