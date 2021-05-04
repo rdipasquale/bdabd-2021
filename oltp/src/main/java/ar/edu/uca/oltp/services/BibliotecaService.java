@@ -1,5 +1,6 @@
 package ar.edu.uca.oltp.services;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class BibliotecaService {
 	
 	public PrestamoBiblioteca registerPrestamo(Alumno alumno, List<RecursoDeBiblioteca> recursos) {
 		//HAY QUE ARREGLAR ESTE METODO Y VALIDAR LOS RECURSOS
+		recursoDeBibliotecaRepository.validateRecursosNoPrestado(recursos);
 		PrestamoBiblioteca prestamo = new PrestamoBiblioteca();
 		return prestamo;
 	}

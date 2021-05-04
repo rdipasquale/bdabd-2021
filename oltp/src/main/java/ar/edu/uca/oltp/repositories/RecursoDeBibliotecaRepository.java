@@ -15,4 +15,7 @@ public interface RecursoDeBibliotecaRepository extends CrudRepository<RecursoDeB
 	
 	public List <RecursoDeBiblioteca> findByPrestamoBiblioteca(PrestamoBiblioteca pdb);
 	public List <RecursoDeBiblioteca> findByNombre(String nombre);
+	
+	public List <RecursoDeBiblioteca> findRecursoMasPrestado();
+	public boolean validateRecursosNoPrestado(List <RecursoDeBiblioteca> recursos);
 }
