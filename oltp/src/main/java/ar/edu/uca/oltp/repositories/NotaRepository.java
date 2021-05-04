@@ -17,13 +17,13 @@ public interface NotaRepository extends CrudRepository<Nota, Integer>{
 
 	List<Nota> findByAlumno(Alumno alumno);
 	
-	List<Nota> findByDocente(Docente docente);
+	List<Nota> findByCorrector(Docente docente);
 	
 	List<Nota> findByFecha(Date fecha);
 	
-	long countByDocenteAndFecha(Docente docente,Date fecha);
+	long countByCorrectorAndFecha(Docente docente,Date fecha);
 	
-	long countByDocenteAndAlumno(Docente docente,Alumno alumno);
+	long countByCorrectorAndAlumno(Docente docente,Alumno alumno);
 	
 	void deleteByFecha(Date fecha);
 	

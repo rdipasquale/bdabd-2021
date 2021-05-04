@@ -8,13 +8,11 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import ar.edu.uca.oltp.entities.PrestamoBiblioteca;
 import ar.edu.uca.oltp.entities.RecursoDeBiblioteca;
 
 @Transactional
 public interface RecursoDeBibliotecaRepository extends CrudRepository<RecursoDeBiblioteca, Integer>{
 	
-	public List <RecursoDeBiblioteca> findByPrestamoBiblioteca(PrestamoBiblioteca pdb);
 	public List <RecursoDeBiblioteca> findByNombre(String nombre);
 	
 	@Query(nativeQuery = false,value = "select r from RecursoDeBiblioteca r where r.id>1")
