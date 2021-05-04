@@ -17,6 +17,8 @@ public abstract class Materia {
     private int cargaHoraria;
     private int cantHoras;
     private String nombre;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(columnDefinition = "PLAN_ID")
     private Plan plan;
 
     public Materia() {
