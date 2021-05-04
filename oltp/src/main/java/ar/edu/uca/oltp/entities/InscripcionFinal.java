@@ -1,11 +1,13 @@
 package ar.edu.uca.oltp.entities;
 
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
@@ -22,9 +24,11 @@ public class InscripcionFinal extends Tramite {
 		super(estado, fechaInicio, fechaCierre);
 		// TODO Auto-generated constructor stub
 	}
+	@ManyToOne
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
 	@Column(name="MESA_DE_FINAL")
+	@ManyToOne
 	@JoinColumn(name="MESA_DE_FINAL", nullable = false)
 	private MesaDeFinal mesaDeFinal;
 	public Alumno getAlumno() {

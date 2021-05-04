@@ -1,10 +1,12 @@
 package ar.edu.uca.oltp.entities;
 
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Table;
 
 import ar.edu.uca.oltp.valueObjects.EstadoTramite;
@@ -19,10 +21,13 @@ public class InscripcionMateria extends Tramite{
 		super(estado, fechaInicio, fechaCierre);
 		// TODO Auto-generated constructor stub
 	}
+	@ManyToOne
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
+	@ManyToOne
 	@JoinColumn(name="MATERIA", nullable = false)
 	private Materia materia;
+	@ManyToOne
 	@JoinColumn(name="COMISION", nullable = false)
 	private Comision comision;
 	public Alumno getAlumno() {
