@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.uca.oltp.entities.Alumno;
+import ar.edu.uca.oltp.entities.Comision;
 import ar.edu.uca.oltp.entities.InscripcionMateria;
+import ar.edu.uca.oltp.entities.Materia;
 import ar.edu.uca.oltp.repositories.InscripcionMateriaRepository;
 
 @Component
@@ -18,13 +20,22 @@ public class InscripcionMateriaService {
 	  private InscripcionMateriaRepository imRepository;
 	  
 	  public InscripcionMateriaService() {
-		// TODO Auto-generated constructor stub
 	  }
 	  
-	  public List<Alumno> findAllInscriptos(Integer materia_id)
+	  public InscripcionMateria crearInscripcion(Alumno alumno, Materia materia, Comision comision) {
+		  return imRepository. crearInscripcion(alumno, materia, comision);
+	  }
+	  
+	  public void borrarInscripcion(InscripcionMateria inscripcion) {
+		  imRepository.borrarInscripcion(inscripcion);
+	  }
+	  
+	  public List<Alumno> buscarTodosLosInscriptosPorMateriaId(Integer materiaId)
 	  {
-		  return (List<Alumno>)imRepository.findAllInscriptos(materia_id);
+		  return imRepository.buscarTodosLosInscriptosPorMateriaId(materiaId);
 	  }
-	  
 
+	  public List<InscripcionMateria> buscarTodasLasInscripcionesPorAlumnoId(Integer alumnoId) {
+		  return imRepository.buscarTodasLasInscripcionesPorAlumnoId(alumnoId);
+	  }
 }
