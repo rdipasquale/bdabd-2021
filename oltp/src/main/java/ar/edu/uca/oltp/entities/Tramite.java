@@ -7,12 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 import ar.edu.uca.oltp.valueObjects.EstadoTramite;
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name="Tramite")
-public class Tramite {
+public abstract class Tramite {
 	public Tramite(EstadoTramite estado, Date fechaInicio, Date fechaCierre) {
 		super();
 		this.estado = estado;

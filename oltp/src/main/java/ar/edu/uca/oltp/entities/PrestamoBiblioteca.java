@@ -11,13 +11,13 @@ import ar.edu.uca.oltp.valueObjects.EstadoTramite;
 @Entity
 @Table(name="PrestamoBiblioteca")
 public class PrestamoBiblioteca extends Tramite{
-	
+	public PrestamoBiblioteca() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public PrestamoBiblioteca(EstadoTramite estado, Date fechaInicio, Date fechaCierre) {
 		super(estado, fechaInicio, fechaCierre);
 		// TODO Auto-generated constructor stub
-	}
-	public PrestamoBiblioteca() {
-		
 	}
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
