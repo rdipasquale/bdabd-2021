@@ -17,6 +17,10 @@ abstract public class Carrera {
     private Plan plan;
     private Facultad facultad;
 
+    public Carrera() {
+		// TODO Auto-generated constructor stub
+	}
+    
     public Carrera(int id_carrera, String nombre, Plan plan, Facultad facultad, String tipoCarrera) {
         this.id_carrera = id_carrera;
         this.nombre = nombre;

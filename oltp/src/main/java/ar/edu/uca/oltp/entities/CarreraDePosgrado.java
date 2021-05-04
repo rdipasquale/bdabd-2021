@@ -11,8 +11,8 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "TIPO_CARRERA")
 public class CarreraDePosgrado extends Carrera{
 
-    public CarreraDePosgrado(int id_carrera, String nombre, Plan plan, String tipoCarrera) {
-        super(id_carrera, nombre, plan, tipoCarrera);
-    }
+	public CarreraDePosgrado() {
+		super();
+	}
 
 }
