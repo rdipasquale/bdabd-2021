@@ -19,7 +19,7 @@ public class Comision {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="COMISION_SEQ")
 	private int id;
-	@ManyToOne(fetch= FetchType.LAZY)
+	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name= "ID_MATERIA", nullable=false)
 	private Materia materia;
 	@ManyToMany
