@@ -50,13 +50,16 @@ public class BibliotecaService {
 			StockRecursoDeBiblioteca stock=
 					stockRecursoDeBibliotecaRepository.findByRecurso(recurso);
 			stock.setCantidad(stock.getCantidad()-1);
+			stockRecursoDeBibliotecaRepository.save(stock);
 		}
+		
 	}
 	public void addStock(List<RecursoDeBiblioteca> recursos) {
 		for (RecursoDeBiblioteca recurso: recursos){
 			StockRecursoDeBiblioteca stock=
 					stockRecursoDeBibliotecaRepository.findByRecurso(recurso);
 			stock.setCantidad(stock.getCantidad()+1);
+			stockRecursoDeBibliotecaRepository.save(stock);
 		}
 	}
 	
@@ -72,7 +75,7 @@ public class BibliotecaService {
 	}
 		
 	
-	public void registerPrestamo(Alumno alumno, List<RecursoDeBiblioteca> recursos) {
+	public PrestamoBiblioteca registerPrestamo(Alumno alumno, List<RecursoDeBiblioteca> recursos) {
 		EstadoTramite estado;
 		if(this.validateStockRecursos(recursos)) {
 			this.reduceStock(recursos);
@@ -85,14 +88,16 @@ public class BibliotecaService {
 		Date fechaFinal = fechaInicio;
 		PrestamoBiblioteca prestamo = new PrestamoBiblioteca(estado, fechaInicio, fechaFinal,alumno,recursos);
 		prestamoBibliotecaRepository.save(prestamo);
+		return prestamo;
 	}
 	
-	public void endPrestamo(Alumno alumno) {
+	public PrestamoBiblioteca endPrestamo(Alumno alumno) {
 		PrestamoBiblioteca prestamo = 
 				prestamoBibliotecaRepository.findByAlumnoAndEstado(alumno, EstadoTramite.EN_CURSO);
 		prestamo.setEstado(EstadoTramite.FINALIZADO);
 		List<RecursoDeBiblioteca> recursos= prestamo.getRecursos();
 		this.addStock(recursos);
 		prestamoBibliotecaRepository.save(prestamo);
+		return prestamo;
 	}
 }
