@@ -1,12 +1,13 @@
 package ar.edu.uca.oltp.entities;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import ar.edu.uca.oltp.valueObjects.EstadoTramite;
@@ -17,27 +18,34 @@ public class PrestamoBiblioteca extends Tramite{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PrestamoBiblioteca(EstadoTramite estado, Date fechaInicio, Date fechaCierre) {
+	
+	public PrestamoBiblioteca(EstadoTramite estado, Date fechaInicio, Date fechaCierre, Alumno alumno,
+			List<RecursoDeBiblioteca> recursos) {
 		super(estado, fechaInicio, fechaCierre);
-		// TODO Auto-generated constructor stub
+		this.alumno = alumno;
+		this.recursos = recursos;
 	}
+
 	@ManyToOne
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
-	@ManyToOne
-	@JoinColumn(name="RECURSOS_DE_BIBLIOTECA", nullable = false)
-	private RecursoDeBiblioteca recurso;
+	@ManyToMany
+	@JoinTable(name="PRESTAMO_RECURSO",
+	joinColumns= @JoinColumn(name="PRESTAMO_ID"),
+	inverseJoinColumns= @JoinColumn(name="RECURSO-ID"))
+	private List<RecursoDeBiblioteca> recursos;
 	public Alumno getAlumno() {
 		return alumno;
 	}
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
-	public RecursoDeBiblioteca getRecurso() {
-		return recurso;
+	public List<RecursoDeBiblioteca> getRecursos() {
+		return recursos;
 	}
-	public void setRecurso(RecursoDeBiblioteca recurso) {
-		this.recurso = recurso;
+	public void setRecursos(List<RecursoDeBiblioteca> recursos) {
+		this.recursos = recursos;
 	}
+	
 	
 }
