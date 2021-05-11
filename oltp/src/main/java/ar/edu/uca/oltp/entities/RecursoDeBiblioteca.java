@@ -27,6 +27,11 @@ public class RecursoDeBiblioteca {
 	@JoinColumn(name = "ID_BIBLIOTECA",nullable = false)
 	private Biblioteca biblioteca;
 	
+	public RecursoDeBiblioteca() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public RecursoDeBiblioteca(int id , String nombre , Biblioteca biblioteca) {
 		this.id=id;
 		this.nombre=nombre;
