@@ -44,9 +44,11 @@ public class NomencladorService {
     public Set<Edificio> edificiosConBiblioteca() {
     	List<Biblioteca> bibliotecas = (List<Biblioteca>) bibliotecaRepository.findAll();
     	Set<Edificio> edificiosConBiblioteca = new HashSet<Edificio>();
+    	
     	for (Biblioteca b: bibliotecas) {
     		edificiosConBiblioteca.add(b.getEdificio());
     	}
+
     	return edificiosConBiblioteca;
     }
 
