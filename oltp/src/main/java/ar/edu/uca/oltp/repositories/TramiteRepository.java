@@ -2,14 +2,14 @@ package ar.edu.uca.oltp.repositories;
 
 import javax.transaction.Transactional;
 
-import ar.edu.uca.oltp.entities.Comision;
-import ar.edu.uca.oltp.entities.Tramite;
 import org.springframework.data.repository.CrudRepository;
+
+import ar.edu.uca.oltp.entities.Tramite;
 
 
 
 @Transactional
 public interface TramiteRepository extends CrudRepository<Tramite, Integer>{
 	
-	int countByComision(Comision comision);
+	
 }
