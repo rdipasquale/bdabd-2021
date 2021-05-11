@@ -93,5 +93,6 @@ public class BibliotecaService {
 		prestamo.setEstado(EstadoTramite.FINALIZADO);
 		List<RecursoDeBiblioteca> recursos= prestamo.getRecursos();
 		this.addStock(recursos);
+		prestamoBibliotecaRepository.save(prestamo);
 	}
 }
