@@ -46,24 +46,24 @@ public class BibliotecaService {
 	}
 	
 	public void reduceStock(List<RecursoDeBiblioteca> recursos) {
-		for (int i =0; i<recursos.size(); i++){
+		for (RecursoDeBiblioteca recurso: recursos){
 			StockRecursoDeBiblioteca stock=
-					stockRecursoDeBibliotecaRepository.findByRecurso(recursos.get(i));
+					stockRecursoDeBibliotecaRepository.findByRecurso(recurso);
 			stock.setCantidad(stock.getCantidad()-1);
 		}
 	}
 	public void addStock(List<RecursoDeBiblioteca> recursos) {
-		for (int i =0; i<recursos.size(); i++){
+		for (RecursoDeBiblioteca recurso: recursos){
 			StockRecursoDeBiblioteca stock=
-					stockRecursoDeBibliotecaRepository.findByRecurso(recursos.get(i));
+					stockRecursoDeBibliotecaRepository.findByRecurso(recurso);
 			stock.setCantidad(stock.getCantidad()+1);
 		}
 	}
 	
 	public boolean validateStockRecursos(List<RecursoDeBiblioteca> recursos) {
-		for (int i =0; i<recursos.size(); i++){
+		for (RecursoDeBiblioteca recurso: recursos){
 			StockRecursoDeBiblioteca stock=
-					stockRecursoDeBibliotecaRepository.findByRecurso(recursos.get(i));
+					stockRecursoDeBibliotecaRepository.findByRecurso(recurso);
 			if(stock.getCantidad()<=0) {
 				return false;
 			}
