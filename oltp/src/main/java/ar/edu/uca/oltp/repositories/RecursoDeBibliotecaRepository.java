@@ -17,7 +17,7 @@ public interface RecursoDeBibliotecaRepository extends CrudRepository<RecursoDeB
 	
 	@Query(nativeQuery = true,value = "select rb.id as Id,rb.nombre as Nombre,max(count(rb.id)) as Cantidad"
 			+ " from PrestamoBiblioteca pb inner join RECURSODEBIBLIOTECA rb on rb.id=pb.RECURSO-ID "
-			+ "group by(rb.id,rb.nombre)")
+			+ "where pb.estado=ACEPTADO group by(rb.id,rb.nombre)")
 	public List <RecursoDeBiblioteca> findRecursoMasPrestado();
 //	public boolean validateRecursosNoPrestado(List <RecursoDeBiblioteca> recursos);
 }
