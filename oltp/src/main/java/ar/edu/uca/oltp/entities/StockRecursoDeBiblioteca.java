@@ -26,6 +26,12 @@ public class StockRecursoDeBiblioteca {
 	
 	public StockRecursoDeBiblioteca() {}
 	
+	public StockRecursoDeBiblioteca(RecursoDeBiblioteca recurso, int cantidad) {
+		super();
+		this.recurso = recurso;
+		this.cantidad = cantidad;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -32,7 +32,7 @@ public class PrestamoBiblioteca extends Tramite{
 	@ManyToMany
 	@JoinTable(name="PRESTAMO_RECURSO",
 	joinColumns= @JoinColumn(name="PRESTAMO_ID"),
-	inverseJoinColumns= @JoinColumn(name="RECURSO-ID"))
+	inverseJoinColumns= @JoinColumn(name="RECURSO_ID"))
 	private List<RecursoDeBiblioteca> recursos;
 	public Alumno getAlumno() {
 		return alumno;
