@@ -114,7 +114,14 @@ public class BibliotecaService {
 		return prestamo;
 	}
 	
-	public PrestamoBiblioteca endPrestamo(Alumno alumno) {
+	public PrestamoBiblioteca endPrestamo(String nombre) throws Exception{
+		Alumno alumno;
+		try {
+			alumno= validateAlumno(nombre);
+		}
+		catch(Exception e){
+			throw e;
+		}
 		PrestamoBiblioteca prestamo = 
 				prestamoBibliotecaRepository.findByAlumnoAndEstado(alumno, EstadoTramite.EN_CURSO);
 		prestamo.setEstado(EstadoTramite.FINALIZADO);
