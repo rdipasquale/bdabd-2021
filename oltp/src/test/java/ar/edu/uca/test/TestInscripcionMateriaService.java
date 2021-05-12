@@ -1,6 +1,7 @@
 package ar.edu.uca.test;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ import ar.edu.uca.oltp.entities.Alumno;
 import ar.edu.uca.oltp.entities.Comision;
 import ar.edu.uca.oltp.entities.InscripcionMateria;
 import ar.edu.uca.oltp.entities.MateriaComun;
+import ar.edu.uca.oltp.exceptions.YaEstaInscriptoException;
 import ar.edu.uca.oltp.repositories.AlumnoRepository;
 import ar.edu.uca.oltp.repositories.ComisionRepository;
 import ar.edu.uca.oltp.repositories.MateriaRepository;
@@ -58,5 +60,10 @@ public class TestInscripcionMateriaService {
 		InscripcionMateria imCreated = ims.crearInscripcion(alex, algebra, am);
 		List<InscripcionMateria> im = ims.buscarTodasLasInscripcionesPorAlumno(alex);
 		assertTrue(im.contains(imCreated));
+	}
+	@Test
+	public void testAlumnoYaSeInscribio() {
+		InscripcionMateria imCreated = ims.crearInscripcion(alex, algebra, am);
+		assertThrows(YaEstaInscriptoException.class,(()-> ims.crearInscripcion(alex, algebra, am)));
 	}
 }
