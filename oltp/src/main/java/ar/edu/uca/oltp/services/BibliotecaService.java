@@ -11,6 +11,7 @@ import ar.edu.uca.oltp.entities.Alumno;
 import ar.edu.uca.oltp.entities.PrestamoBiblioteca;
 import ar.edu.uca.oltp.entities.RecursoDeBiblioteca;
 import ar.edu.uca.oltp.entities.StockRecursoDeBiblioteca;
+import ar.edu.uca.oltp.repositories.AlumnoRepository;
 import ar.edu.uca.oltp.repositories.PrestamoBibliotecaRepository;
 import ar.edu.uca.oltp.repositories.RecursoDeBibliotecaRepository;
 import ar.edu.uca.oltp.repositories.StockRecursoDeBibliotecaRepository;
@@ -28,7 +29,10 @@ public class BibliotecaService {
 	
 	@Autowired
 	private PrestamoBibliotecaRepository prestamoBibliotecaRepository;
-
+	
+	@Autowired
+	private AlumnoRepository alumnoRepository;
+	
 	public BibliotecaService() {
 		
 	}
@@ -73,17 +77,36 @@ public class BibliotecaService {
 		}
 	return true;
 	}
-		
 	
-	public PrestamoBiblioteca registerPrestamo(Alumno alumno, List<RecursoDeBiblioteca> recursos) {
-		EstadoTramite estado;
-		if(this.validateStockRecursos(recursos)) {
-			this.reduceStock(recursos);
-			estado= EstadoTramite.EN_CURSO;
+	public Alumno validateAlumno(String nombre) throws Exception {
+		if(alumnoRepository.findByNombre(nombre)!=null) {
+			return new Alumno(nombre);
 		}
-		else {
-			estado= EstadoTramite.RECHAZADO;
+		else
+		{
+			throw new Exception("Alumno not found");
 		}
+		
+	}
+	
+	public PrestamoBiblioteca registerPrestamo(String nombre, List<RecursoDeBiblioteca> recursos) throws Exception {
+		EstadoTramite estado= EstadoTramite.INICIADO;
+		Alumno alumno;
+			try {
+				alumno= validateAlumno(nombre);
+			}
+			catch(Exception e){
+				throw e;
+			}
+			if(this.validateStockRecursos(recursos)) {
+				this.reduceStock(recursos);
+				estado= EstadoTramite.EN_CURSO;
+			}
+			else {
+				estado= EstadoTramite.RECHAZADO;
+			}
+		
+		
 		Date fechaInicio = new Date();
 		Date fechaFinal = fechaInicio;
 		PrestamoBiblioteca prestamo = new PrestamoBiblioteca(estado, fechaInicio, fechaFinal,alumno,recursos);

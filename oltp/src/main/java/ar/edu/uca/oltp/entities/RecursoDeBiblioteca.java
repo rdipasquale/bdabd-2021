@@ -1,5 +1,6 @@
 package ar.edu.uca.oltp.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

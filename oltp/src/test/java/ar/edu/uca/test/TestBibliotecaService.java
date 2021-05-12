@@ -45,6 +45,7 @@ public class TestBibliotecaService {
 	@Autowired
 	private BibliotecaRepository bibliotecaRepository;
 	private Alumno alumno = new Alumno();
+	private Alumno alumnoFallido = new Alumno();
 	private RecursoDeBiblioteca recurso1 = new RecursoDeBiblioteca();
 	private RecursoDeBiblioteca recurso2 = new RecursoDeBiblioteca();
 	private StockRecursoDeBiblioteca stockRecurso1;
@@ -84,14 +85,39 @@ public class TestBibliotecaService {
 		}
 	}
 	@Test
+	public void testRegisterPrestamoConAlumnoFallido() {
+		try {
+		PrestamoBiblioteca prestamo= 
+				bibliotecaService.registerPrestamo("Pablo", recursos);
+		}
+		catch(Exception e) {
+			assertEquals(e.getMessage(),"Alumno not found");
+		}
+		
+	}
+	@Test
 	public void testRegisterPrestamo() {
-		PrestamoBiblioteca prestamo= bibliotecaService.registerPrestamo(alumno, recursos);
-		assertEquals(prestamo.getEstado(), EstadoTramite.EN_CURSO);
+		try {
+			PrestamoBiblioteca prestamo= 
+					bibliotecaService.registerPrestamo("Pablo", recursos);
+			assertEquals(prestamo.getEstado(),EstadoTramite.EN_CURSO);
+			}
+			catch(Exception e) {
+				assertEquals(e.getMessage(),"Alumno not found");
+			}
+		
 	}
 	@Test
 	public void testEndPrestamo() {
-		PrestamoBiblioteca prestamo= bibliotecaService.registerPrestamo(alumno, recursos);
-		prestamo= bibliotecaService.endPrestamo(alumno);
-		assertEquals(prestamo.getEstado(), EstadoTramite.FINALIZADO);
+		try {
+			PrestamoBiblioteca prestamo= 
+					bibliotecaService.registerPrestamo("Pepe", recursos);
+			prestamo= bibliotecaService.endPrestamo(alumno);
+			assertEquals(prestamo.getEstado(),EstadoTramite.FINALIZADO);
+			}
+			catch(Exception e) {
+				assertEquals(e.getMessage(),"Alumno not found");
+			}
+		
 	}
 }

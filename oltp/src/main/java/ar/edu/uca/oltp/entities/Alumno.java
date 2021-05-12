@@ -17,6 +17,15 @@ public class Alumno {
 		
 	}
 
+	
+	
+	public Alumno(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Alumno [id=" + id + ", nombre=" + nombre + "]";
@@ -59,6 +68,8 @@ public class Alumno {
 			return false;
 		return true;
 	}
+
+	
 
 	
 	

@@ -8,5 +8,5 @@ import ar.edu.uca.oltp.entities.Alumno;
 
 @Transactional
 public interface AlumnoRepository extends CrudRepository<Alumno, Integer>{
-
+	public Alumno findByNombre(String nombre);
 }
