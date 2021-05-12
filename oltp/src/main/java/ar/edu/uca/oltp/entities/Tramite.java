@@ -22,6 +22,11 @@ public abstract class Tramite {
 		this.fechaInicio = fechaInicio;
 		this.fechaCierre = fechaCierre;
 	}
+	public Tramite(EstadoTramite estado, Date fechaInicio) {
+		super();
+		this.estado = estado;
+		this.fechaInicio = fechaInicio;
+	}
 	public Tramite() {
 		
 	}

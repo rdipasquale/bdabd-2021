@@ -6,9 +6,11 @@ import java.util.Date;
 @Entity
 @DiscriminatorValue("ME")
 public class MateriaEspecifica extends Materia{
-
-
-    public MateriaEspecifica() {
+	public MateriaEspecifica() {
+		super();
+	}
+    public MateriaEspecifica(int idMateria, int cargaHoraria, int cantHoras, String nombre) {
+    	super(idMateria,cargaHoraria,cantHoras,nombre);
     }
 
 

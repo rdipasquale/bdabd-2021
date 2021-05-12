@@ -37,6 +37,16 @@ public class Comision {
 	}
 
 
+	public Materia getMateria() {
+		return materia;
+	}
+
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
+
+
 	public int getId() {
 		return id;
 	}
