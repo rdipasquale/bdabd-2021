@@ -6,7 +6,6 @@ import javax.persistence.ManyToOne;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Table;
 
 import ar.edu.uca.oltp.valueObjects.EstadoTramite;
@@ -20,6 +19,9 @@ public class InscripcionMateria extends Tramite{
 	public InscripcionMateria(EstadoTramite estado, Date fechaInicio, Date fechaCierre) {
 		super(estado, fechaInicio, fechaCierre);
 		// TODO Auto-generated constructor stub
+	}
+	public InscripcionMateria(EstadoTramite estado, Date fechaInicio) {
+		super(estado,fechaInicio);
 	}
 	@ManyToOne
 	@JoinColumn(name="ALUMNO_ID", nullable = false)

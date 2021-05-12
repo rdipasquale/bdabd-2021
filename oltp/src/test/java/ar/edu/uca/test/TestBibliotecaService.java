@@ -45,7 +45,6 @@ public class TestBibliotecaService {
 	@Autowired
 	private BibliotecaRepository bibliotecaRepository;
 	private Alumno alumno = new Alumno();
-	private Alumno alumnoFallido = new Alumno();
 	private RecursoDeBiblioteca recurso1 = new RecursoDeBiblioteca();
 	private RecursoDeBiblioteca recurso2 = new RecursoDeBiblioteca();
 	private StockRecursoDeBiblioteca stockRecurso1;
@@ -86,8 +85,7 @@ public class TestBibliotecaService {
 	}
 	@Test
 	public void testRegisterPrestamoConAlumnoFallido() {
-		try {
-		PrestamoBiblioteca prestamo= 
+		try { 
 				bibliotecaService.registerPrestamo("Pablo", recursos);
 		}
 		catch(Exception e) {

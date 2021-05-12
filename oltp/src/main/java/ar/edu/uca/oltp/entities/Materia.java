@@ -25,12 +25,11 @@ public abstract class Materia {
 
     }
 
-    public Materia(int idMateria, int cargaHoraria, int cantHoras, String nombre, Plan plan) {
+    public Materia(int idMateria, int cargaHoraria, int cantHoras, String nombre) {
         this.idMateria = idMateria;
         this.cargaHoraria = cargaHoraria;
         this.cantHoras = cantHoras;
         this.nombre = nombre;
-        this.plan = plan;
     }
 
 
