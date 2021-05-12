@@ -50,6 +50,10 @@ public class Alumno {
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Alumno [id=" + id + ", nombre=" + nombre + "]";
+	}
 	
 }

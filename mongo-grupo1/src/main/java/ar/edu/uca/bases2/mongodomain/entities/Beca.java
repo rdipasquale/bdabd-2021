@@ -58,8 +58,10 @@ public class Beca {
 		this.alumno = alumno;
 	}
 	
-	
-	
+	@Override
+	public String toString() {
+		return "Beca [id=" + id + ", fechaVencimiento=" + fechaVencimiento + ", alumno=" + alumno + "]";
+	}	
 
 }
 
