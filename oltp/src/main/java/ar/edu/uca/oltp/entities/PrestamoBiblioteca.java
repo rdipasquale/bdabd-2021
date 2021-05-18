@@ -27,10 +27,10 @@ public class PrestamoBiblioteca extends Tramite{
 		this.recursos = recursos;
 	}
 
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
-	@ManyToMany(cascade = CascadeType.REMOVE)
+	@ManyToMany
 	@JoinTable(name="PRESTAMO_RECURSO",
 	joinColumns= @JoinColumn(name="PRESTAMO_ID"),
 	inverseJoinColumns= @JoinColumn(name="RECURSO_ID"))

@@ -20,11 +20,11 @@ public class InscripcionFinal extends Tramite {
 		super(estado, fechaInicio, fechaCierre);
 		// TODO Auto-generated constructor stub
 	}
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
 
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne
 	@JoinColumn(name="MESA_DE_FINAL", nullable = false)
 	private MesaDeFinal mesaDeFinal;
 	public Alumno getAlumno() {
