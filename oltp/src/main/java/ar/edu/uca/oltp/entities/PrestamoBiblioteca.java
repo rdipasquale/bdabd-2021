@@ -3,6 +3,7 @@ package ar.edu.uca.oltp.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -26,10 +27,10 @@ public class PrestamoBiblioteca extends Tramite{
 		this.recursos = recursos;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.REMOVE)
 	@JoinTable(name="PRESTAMO_RECURSO",
 	joinColumns= @JoinColumn(name="PRESTAMO_ID"),
 	inverseJoinColumns= @JoinColumn(name="RECURSO_ID"))

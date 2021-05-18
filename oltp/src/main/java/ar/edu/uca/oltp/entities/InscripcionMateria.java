@@ -5,6 +5,7 @@ import javax.persistence.ManyToOne;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -23,13 +24,13 @@ public class InscripcionMateria extends Tramite{
 	public InscripcionMateria(EstadoTramite estado, Date fechaInicio) {
 		super(estado,fechaInicio);
 	}
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name="MATERIA", nullable = false)
 	private Materia materia;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name="COMISION", nullable = false)
 	private Comision comision;
 	public Alumno getAlumno() {

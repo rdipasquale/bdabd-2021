@@ -2,6 +2,7 @@ package ar.edu.uca.oltp.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,11 +20,11 @@ public class InscripcionFinal extends Tramite {
 		super(estado, fechaInicio, fechaCierre);
 		// TODO Auto-generated constructor stub
 	}
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name="ALUMNO_ID", nullable = false)
 	private Alumno alumno;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name="MESA_DE_FINAL", nullable = false)
 	private MesaDeFinal mesaDeFinal;
 	public Alumno getAlumno() {
