@@ -66,4 +66,8 @@ public class Plan {
                 ", materias=" + materias +
                 '}';
     }
+    
+    public void agregarMateria(Materia materia) {
+    	this.materias.add(materia);
+    }
 }

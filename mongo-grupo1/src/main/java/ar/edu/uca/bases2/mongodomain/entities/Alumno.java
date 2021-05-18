@@ -10,7 +10,6 @@ public class Alumno {
 	private String id;
 	private String nombre;
 	
-	
 	public Alumno() {
 
 	}
