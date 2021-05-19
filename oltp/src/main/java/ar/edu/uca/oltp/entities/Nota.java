@@ -14,10 +14,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Nota")
 public class Nota {
-	public Nota(Date fecha, int calificacion, Alumno alumno,Docente correctordocente) {	
+	public Nota(Date fecha, int calificacion,Docente correctordocente) {	
 		this.fecha=fecha;
 		this.calificacion=calificacion;
-		this.alumno=alumno;
 		this.corrector=correctordocente;
 	}
 	public Nota() {
@@ -28,9 +27,6 @@ public class Nota {
 	private Date fecha;
 	private int calificacion;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="ALUMNO",nullable=false)
-	private Alumno alumno;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="CORRECTOR",nullable=false)
 	private Docente corrector;
@@ -57,12 +53,7 @@ public class Nota {
 	public void setCalificacion(int calificacion) {
 		this.calificacion = calificacion;
 	}
-	public Alumno getAlumno() {
-		return alumno;
-	}
-	public void setAlumno(Alumno alumno) {
-		this.alumno = alumno;
-	}
+	
 	public Docente getCorrector() {
 		return corrector;
 	}
@@ -73,10 +64,6 @@ public class Nota {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((alumno == null) ? 0 : alumno.hashCode());
-		result = prime * result + calificacion;
-		result = prime * result + ((corrector == null) ? 0 : corrector.hashCode());
-		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
 		result = prime * result + id;
 		return result;
 	}
@@ -89,23 +76,6 @@ public class Nota {
 		if (getClass() != obj.getClass())
 			return false;
 		Nota other = (Nota) obj;
-		if (alumno == null) {
-			if (other.alumno != null)
-				return false;
-		} else if (!alumno.equals(other.alumno))
-			return false;
-		if (calificacion != other.calificacion)
-			return false;
-		if (corrector == null) {
-			if (other.corrector != null)
-				return false;
-		} else if (!corrector.equals(other.corrector))
-			return false;
-		if (fecha == null) {
-			if (other.fecha != null)
-				return false;
-		} else if (!fecha.equals(other.fecha))
-			return false;
 		if (id != other.id)
 			return false;
 		return true;

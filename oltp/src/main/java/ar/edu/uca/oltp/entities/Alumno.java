@@ -1,9 +1,14 @@
 package ar.edu.uca.oltp.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Alumno {
@@ -12,6 +17,9 @@ public class Alumno {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ALUMNO_SEQ")
 	private int id;
 	private String nombre;
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name="ID_NOTA",nullable=false)
+	private List<Nota> notas;
 	
 	public Alumno() {
 		
@@ -46,6 +54,19 @@ public class Alumno {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+
+	public List<Nota> getNotas() {
+		return notas;
+	}
+
+
+
+	public void setNotas(List<Nota> notas) {
+		this.notas = notas;
+	}
+
+
 
 	@Override
 	public int hashCode() {
