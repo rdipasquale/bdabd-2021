@@ -12,12 +12,12 @@ import java.util.Objects;
 public class Plan {
 
     @Id
-    private int idPlan;
+    private String idPlan;
     private Date fechaDeCreacion;
     @DBRef
     public List<Materia> materias;
 
-    public int getIdPlan() {
+    public String getIdPlan() {
         return idPlan;
     }
 
@@ -25,7 +25,7 @@ public class Plan {
 
     }
 
-    public void setIdPlan(int idPlan) {
+    public void setIdPlan(String idPlan) {
         this.idPlan = idPlan;
     }
 

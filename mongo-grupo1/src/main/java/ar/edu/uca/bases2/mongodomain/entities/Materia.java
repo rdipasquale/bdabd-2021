@@ -6,11 +6,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Objects;
 
 @Document
-public abstract class Materia {
+public  class Materia {
 
     @Id
     private String idMateria;
-    private int cargaHoraria;
     private int cantHoras;
     private String nombre;
 
@@ -26,14 +25,6 @@ public abstract class Materia {
 
     public void setIdMateria(String idMateria) {
         this.idMateria = idMateria;
-    }
-
-    public int getCargaHoraria() {
-        return cargaHoraria;
-    }
-
-    public void setCargaHoraria(int cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
     }
 
     public int getCantHoras() {
@@ -71,7 +62,6 @@ public abstract class Materia {
     public java.lang.String toString() {
         return "Materia{" +
                 "idMateria='" + idMateria + '\'' +
-                ", cargaHoraria=" + cargaHoraria +
                 ", cantHoras=" + cantHoras +
                 ", nombre='" + nombre + '\'' +
                 '}';
