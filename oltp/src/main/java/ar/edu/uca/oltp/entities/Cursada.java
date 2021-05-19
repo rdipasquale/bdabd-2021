@@ -32,12 +32,8 @@ public class Cursada {
 			inverseJoinColumns = @JoinColumn(name = "idDocente")
 		)
 	private Map<CargoDocente, Docente> docentes;
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinTable(
-			name="CURSADA_AULA",
-			joinColumns= @JoinColumn(name="ID"),
-			inverseJoinColumns= @JoinColumn(name="AULA_ID", nullable=false)
-		)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="AULA_ID", nullable=false)
 	private Aula aula;
 	@ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name= "COMISION_ID", nullable=false)
