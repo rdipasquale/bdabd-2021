@@ -14,9 +14,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Nota")
 public class Nota {
-	public Nota(Date fecha, int calificacion,Docente correctordocente) {	
+	public Nota(Date fecha, int calificacion, Alumno alumno,Docente correctordocente) {	
 		this.fecha=fecha;
 		this.calificacion=calificacion;
+		this.alumno=alumno;
 		this.corrector=correctordocente;
 	}
 	public Nota() {
@@ -28,9 +29,17 @@ public class Nota {
 	private int calificacion;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="CORRECTOR",nullable=false)
+	@JoinColumn(name="ID_ALUMNO",nullable=false)
+	private Alumno alumno;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="ID_CORRECTOR",nullable=false)
 	private Docente corrector;
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="ID_MESADEFINAL",nullable=true)
+	private MesaDeFinal mesaFinal;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="ID_CURSADA",nullable=true)
+	private Cursada cursada;
 	@Override
 	public String toString() {
 		return "Nota [id=" + id + ", calificacion=" + calificacion + "]";
@@ -53,7 +62,12 @@ public class Nota {
 	public void setCalificacion(int calificacion) {
 		this.calificacion = calificacion;
 	}
-	
+	public Alumno getAlumno() {
+		return alumno;
+	}
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
 	public Docente getCorrector() {
 		return corrector;
 	}
@@ -80,7 +94,6 @@ public class Nota {
 			return false;
 		return true;
 	}
-	
 	
 	
 }
