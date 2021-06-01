@@ -12,4 +12,5 @@ public class Tramite {
 	protected EstadoTramite estado;
 	private Date fechaInicio;
 	protected Date fechaCierre;
+	
 }
