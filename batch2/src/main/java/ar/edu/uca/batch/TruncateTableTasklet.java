@@ -1,4 +1,4 @@
-package org.test.batch.batchTest;
+package ar.edu.uca.batch;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

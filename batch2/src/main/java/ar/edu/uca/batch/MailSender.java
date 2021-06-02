@@ -1,4 +1,4 @@
-package org.test.batch.batchTest;
+package ar.edu.uca.batch;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

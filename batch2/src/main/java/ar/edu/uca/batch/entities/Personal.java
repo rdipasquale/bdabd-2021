@@ -1,4 +1,4 @@
-package org.test.batch.batchTest;
+package ar.edu.uca.batch.entities;
 
 import java.util.Set;
 

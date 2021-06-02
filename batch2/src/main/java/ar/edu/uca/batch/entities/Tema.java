@@ -1,32 +1,27 @@
-package org.test.batch.batchTest;
+package ar.edu.uca.batch.entities;
 
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Cronograma {
+public class Tema {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CRONOGRAMA_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TEMA_SEQ")
 	private int id;
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name="TEMA_ID",nullable=false)
-	private List<Tema> temas;
+	private Date fecha;
+	private String contenido;
 	
-	
-	public Cronograma() {
+	public Tema() {
 		super();
 	}
 
-
 	
+
 	public int getId() {
 		return id;
 	}
@@ -39,21 +34,26 @@ public class Cronograma {
 
 
 
-	public List<Tema> getTemas() {
-		return temas;
+	public Date getFecha() {
+		return fecha;
 	}
 
-
-	public void setTemas(List<Tema> temas) {
-		this.temas = temas;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
+	public String getContenido() {
+		return contenido;
+	}
+
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
+	}
 
 	@Override
 	public String toString() {
-		return "Cronograma [id=" + id + "]";
+		return "Tema [id=" + id + ", fecha=" + fecha + ", contenido=" + contenido + "]";
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -63,7 +63,6 @@ public class Cronograma {
 		return result;
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -72,15 +71,18 @@ public class Cronograma {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cronograma other = (Cronograma) obj;
+		Tema other = (Tema) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
 
-
+	
+	
 	
 	
 	
 	
 }
+
+

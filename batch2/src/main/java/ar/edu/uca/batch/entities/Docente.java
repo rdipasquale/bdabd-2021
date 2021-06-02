@@ -1,6 +1,7 @@
-package org.test.batch.batchTest;
+package ar.edu.uca.batch.entities;
 
 import javax.persistence.*;
+
 import java.util.Objects;
 
 @Entity

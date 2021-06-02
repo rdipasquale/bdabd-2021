@@ -1,4 +1,4 @@
-package org.test.batch.batchTest;
+package ar.edu.uca.batch.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
