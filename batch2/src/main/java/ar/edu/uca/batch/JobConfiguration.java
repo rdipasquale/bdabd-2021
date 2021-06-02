@@ -10,7 +10,9 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
+import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
+import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
@@ -18,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+
+import ar.edu.uca.batch.entities.Alumno;
 
 @Configuration
 @EnableBatchProcessing
@@ -29,6 +33,16 @@ public class JobConfiguration {
 	@Autowired
 	public StepBuilderFactory stepBuilderFactory;
 
+	@Bean
+	public JdbcCursorItemReader<Alumno> itemReader(DataSource ds) {
+		return new JdbcCursorItemReaderBuilder<Alumno>()
+				.dataSource(ds)
+				.name("creditReader")
+				.sql("select * from Alumno")
+				.rowMapper(new AlumnoRowMapper())
+				.build();
+	}
+	
 	@Bean
 	public Job importUserJob(JobCompletionNotificationListener listener) {
 		return jobBuilderFactory.get("importUserJob").incrementer(new RunIdIncrementer()).listener(listener)
