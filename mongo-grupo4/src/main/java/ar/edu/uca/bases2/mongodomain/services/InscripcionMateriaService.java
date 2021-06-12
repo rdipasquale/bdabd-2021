@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.uca.bases2.mongodomain.entities.Alumno;
 import ar.edu.uca.bases2.mongodomain.entities.Comision;
@@ -13,6 +14,7 @@ import ar.edu.uca.bases2.mongodomain.exceptions.YaEstaInscriptoException;
 import ar.edu.uca.bases2.mongodomain.repositories.InscripcionMateriaRepository;
 import ar.edu.uca.bases2.mongodomain.valueObjects.EstadoTramite;
 
+@Service
 public class InscripcionMateriaService {
 	@Autowired
 	  private InscripcionMateriaRepository imRepository;

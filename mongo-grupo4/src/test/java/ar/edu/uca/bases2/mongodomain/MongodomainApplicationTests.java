@@ -1,9 +1,11 @@
 package ar.edu.uca.bases2.mongodomain;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,31 +14,49 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import ar.edu.uca.bases2.mongodomain.entities.Concepto;
-import ar.edu.uca.bases2.mongodomain.services.SampleService;
+import ar.edu.uca.bases2.mongodomain.entities.Alumno;
+import ar.edu.uca.bases2.mongodomain.entities.Comision;
+import ar.edu.uca.bases2.mongodomain.entities.InscripcionMateria;
+import ar.edu.uca.bases2.mongodomain.entities.MateriaComun;
+import ar.edu.uca.bases2.mongodomain.exceptions.YaEstaInscriptoException;
+import ar.edu.uca.bases2.mongodomain.repositories.AlumnoRepository;
+import ar.edu.uca.bases2.mongodomain.repositories.ComisionRepository;
+import ar.edu.uca.bases2.mongodomain.repositories.MateriaRepository;
+import ar.edu.uca.bases2.mongodomain.services.InscripcionMateriaService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestPropertySource(locations="classpath:test.properties")
 public class MongodomainApplicationTests {
-
+	@Autowired 
+	private InscripcionMateriaService ims;
 	@Autowired
-	private SampleService ser;
+	private AlumnoRepository ar;
+	@Autowired
+	private MateriaRepository mp;
+	@Autowired
+	private ComisionRepository cr;
+	
+	private Alumno alex = new Alumno("Alex");
+	private MateriaComun algebra = new MateriaComun(1,20,5,"Algebra");
+	private Comision am = new Comision();
 	
 	@Before
-	public void before()
-	{
-		Concepto c=new Concepto("ConceptoD","ConceptoG");
-		ser.saveConcepto(c);
+	public void setUp() throws Exception {
+		ar.save(alex);
+		mp.save(algebra);
+		am.setMateria(algebra);
+		cr.save(am);
 	}
-	
-	@Test
-	public void contextLoads() {
+
+	@After
+	public void tearDown() throws Exception {
 	}
 
 	@Test
-	public void findAllConceptos() {
-		List<Concepto> conceptos= ser.findAllConceptos();
-		assertTrue(conceptos.size()==1);
-	}	
+	public void testAlumnoSeInscribeEnMateria() {
+		InscripcionMateria imCreated = ims.crearInscripcion(alex, algebra, am);
+		List<InscripcionMateria> im = ims.buscarTodasLasInscripcionesPorAlumno(alex);
+		assertTrue(im.contains(imCreated));
+	}
 }
