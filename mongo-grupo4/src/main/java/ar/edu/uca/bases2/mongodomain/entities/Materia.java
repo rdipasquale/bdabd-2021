@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Materia {
 	@Id
-    private int idMateria;
+    private String idMateria;
     private int cargaHoraria;
     private int cantHoras;
     private String nombre;
@@ -18,7 +18,7 @@ public class Materia {
 
     }
 
-    public Materia(int idMateria, int cargaHoraria, int cantHoras, String nombre) {
+    public Materia(String idMateria, int cargaHoraria, int cantHoras, String nombre) {
         this.idMateria = idMateria;
         this.cargaHoraria = cargaHoraria;
         this.cantHoras = cantHoras;
@@ -27,7 +27,7 @@ public class Materia {
 
 
 
-    public int getIdMateria() {
+    public String getIdMateria() {
         return idMateria;
     }
 
@@ -43,7 +43,7 @@ public class Materia {
         return nombre;
     }
 
-    public void setIdMateria(int idMateria) {
+    public void setIdMateria(String idMateria) {
         this.idMateria = idMateria;
     }
 

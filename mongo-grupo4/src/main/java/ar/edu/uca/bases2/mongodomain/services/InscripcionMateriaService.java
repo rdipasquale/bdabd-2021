@@ -54,5 +54,4 @@ public class InscripcionMateriaService {
 	  public List<InscripcionMateria> buscarTodasLasInscripcionesPorComision(Comision comision) {
 		  return imRepository.findByComision(comision);
 	  }
-
 }

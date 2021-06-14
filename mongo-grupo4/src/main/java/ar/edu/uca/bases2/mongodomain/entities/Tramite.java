@@ -25,14 +25,14 @@ public class Tramite {
 		
 	}
 	@Id
-	private int id;
+	private String id;
 	protected EstadoTramite estado;
 	private Date fechaInicio;
 	protected Date fechaCierre;
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public EstadoTramite getEstado() {
@@ -58,7 +58,10 @@ public class Tramite {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
+		result = prime * result + ((fechaCierre == null) ? 0 : fechaCierre.hashCode());
+		result = prime * result + ((fechaInicio == null) ? 0 : fechaInicio.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 	@Override
@@ -70,7 +73,22 @@ public class Tramite {
 		if (getClass() != obj.getClass())
 			return false;
 		Tramite other = (Tramite) obj;
-		if (id != other.id)
+		if (estado != other.estado)
+			return false;
+		if (fechaCierre == null) {
+			if (other.fechaCierre != null)
+				return false;
+		} else if (!fechaCierre.equals(other.fechaCierre))
+			return false;
+		if (fechaInicio == null) {
+			if (other.fechaInicio != null)
+				return false;
+		} else if (!fechaInicio.equals(other.fechaInicio))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

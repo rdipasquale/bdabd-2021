@@ -7,7 +7,7 @@ public class MateriaComun extends Materia {
 	public MateriaComun() {
 		super();
 	}
-    public MateriaComun(int idMateria, int cargaHoraria, int cantHoras, String nombre) {
+    public MateriaComun(String idMateria, int cargaHoraria, int cantHoras, String nombre) {
     	super(idMateria,cargaHoraria,cantHoras,nombre);
     }
 }

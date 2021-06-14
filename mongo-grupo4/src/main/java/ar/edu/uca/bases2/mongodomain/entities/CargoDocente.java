@@ -5,18 +5,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class CargoDocente {
-	public CargoDocente(int id, int categoria) {
+	public CargoDocente(String id, int categoria) {
 		super();
 		this.id = id;
 		this.categoria = categoria;
 	}
 	@Id
-	private int id;
+	private String id;
     private int categoria;
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public int getCategoria() {

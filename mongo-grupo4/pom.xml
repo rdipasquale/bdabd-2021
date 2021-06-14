@@ -39,7 +39,8 @@
 		    <artifactId>de.flapdoodle.embed.mongo</artifactId>
 		    <scope>test</scope>
 		</dependency>
-
+		
+    	
 	</dependencies>
 
 	<build>
