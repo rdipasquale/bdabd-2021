@@ -1,4 +1,4 @@
 Grupo:
-Sofía Terán
-Federico Sarquis
+Sofía Terán,
+Federico Sarquis,
 Federico Stulich
