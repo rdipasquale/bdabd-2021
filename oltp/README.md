@@ -5,3 +5,6 @@ Diagrama de Clases
 Entidades del Modelo de Dominio
 
 https://drive.google.com/drive/folders/1Odj6OeUaTwtSgR9QKiUBQEG62ksMkLAj?usp=sharing 
+
+
+Grupo 1: Sofía Terán, Federico Stulich
